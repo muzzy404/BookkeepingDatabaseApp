@@ -5,7 +5,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import util.DBUtil;
 
-import javax.rmi.CORBA.Util;
 import java.io.IOException;
 import java.util.Locale;
 
@@ -28,7 +27,7 @@ public class Main extends Application {
             e.printStackTrace();
         }
 
-        DBUtil.dbConnect();
+        //DBUtil.dbConnect();
     }
 
     @Override
@@ -51,7 +50,7 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
-        Locale.setDefault(Locale.ENGLISH);
+        Locale.setDefault(Locale.ENGLISH); // important!!!
         launch(args);
     }
 }
