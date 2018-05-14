@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="480.0" prefWidth="840.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProjectsController">
+   <children>
+      <BorderPane layoutX="185.0" layoutY="109.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+         <left>
+            <GridPane BorderPane.alignment="TOP_CENTER">
+              <columnConstraints>
+                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" />
+                <ColumnConstraints halignment="RIGHT" minWidth="10.0" prefWidth="200.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints fillHeight="false" vgrow="NEVER" />
+                <RowConstraints vgrow="NEVER" />
+                <RowConstraints valignment="CENTER" vgrow="NEVER" />
+                  <RowConstraints vgrow="NEVER" />
+                  <RowConstraints vgrow="NEVER" />
+                  <RowConstraints minHeight="10.0" vgrow="NEVER" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
+                  <RowConstraints minHeight="10.0" vgrow="ALWAYS" />
+              </rowConstraints>
+               <children>
+                  <TextField promptText="new project name" GridPane.columnIndex="1">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" top="5.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <Label text="Name" />
+                  <TextField promptText="new project cost" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" top="5.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <Label text="Cost" GridPane.rowIndex="1" />
+                  <ComboBox prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" top="5.0" />
+                     </GridPane.margin>
+                  </ComboBox>
+                  <DatePicker prefWidth="200.0" promptText="new project start date" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" top="5.0" />
+                     </GridPane.margin>
+                  </DatePicker>
+                  <DatePicker prefWidth="200.0" promptText="new project end date" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" top="5.0" />
+                     </GridPane.margin>
+                  </DatePicker>
+                  <Label text="Department" GridPane.rowIndex="2" />
+                  <Label text="Start date" GridPane.rowIndex="3" />
+                  <Label text="End date" GridPane.rowIndex="4" />
+                  <Button alignment="CENTER" mnemonicParsing="false" prefWidth="100.0" text="Add" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                     <GridPane.margin>
+                        <Insets bottom="5.0" top="5.0" />
+                     </GridPane.margin>
+                  </Button>
+                  <Label text="Project ID" GridPane.rowIndex="7" />
+                  <TextField promptText="id of project to update" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" top="5.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <Button mnemonicParsing="false" text="Update" GridPane.rowIndex="8" />
+                  <Button mnemonicParsing="false" text="Update" GridPane.rowIndex="9" />
+                  <DatePicker prefWidth="200.0" promptText="real end date of project" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" top="5.0" />
+                     </GridPane.margin>
+                  </DatePicker>
+                  <TextField promptText="new cost of project" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" top="5.0" />
+                     </GridPane.margin>
+                  </TextField>
+               </children>
+               <BorderPane.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </BorderPane.margin>
+            </GridPane>
+         </left>
+         <center>
+            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <TableView prefHeight="420.0" prefWidth="200.0" />
+                  <GridPane>
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints vgrow="SOMETIMES" />
+                    </rowConstraints>
+                  </GridPane>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button mnemonicParsing="false" text="Show all projects">
+                           <HBox.margin>
+                              <Insets left="5.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <Label text="Result console">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" />
+               </children>
+            </VBox>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>
