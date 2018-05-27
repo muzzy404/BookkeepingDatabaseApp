@@ -52,5 +52,7 @@ public class ProjectsController {
         begDateColumn.setCellValueFactory(cellData -> cellData.getValue().date_begProperty());
         endDateColumn.setCellValueFactory(cellData -> cellData.getValue().date_endProperty());
         endDateRealColumn.setCellValueFactory(cellData -> cellData.getValue().date_end_realProperty());
+
+        idColumn.setVisible(false);
     }
 }

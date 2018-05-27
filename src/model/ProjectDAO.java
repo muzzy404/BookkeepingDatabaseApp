@@ -23,7 +23,6 @@ public class ProjectDAO {
                 .append(PROJECTS_T + "." + Project.DATE_END_REAL)
                 .append(" FROM " + PROJECTS_T + ", " + DEPARTMENTS_T)
                 .append(" WHERE " + PROJECTS_T + "." + Project.DEPARTMENT_ID + " = " + DEPARTMENTS_T + ".ID");
-        System.out.println(select.toString());
 
         ResultSet resultSet = DBUtil.dbExecuteSelect(select.toString());
         return getProjectsList(resultSet);
