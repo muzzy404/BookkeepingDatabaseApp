@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -90,13 +89,13 @@
                <children>
                   <TableView fx:id="projectsTable" prefHeight="420.0" prefWidth="200.0">
                      <columns>
-                        <TableColumn prefWidth="75.0" fx:id="idColumn" text="Id" />
-                        <TableColumn prefWidth="75.0" fx:id="nameColumn" text="Name" />
-                        <TableColumn prefWidth="75.0" fx:id="costColumn" text="Cost" />
-                        <TableColumn prefWidth="75.0" fx:id="departmentColumn" text="Dep" />
-                        <TableColumn prefWidth="75.0" fx:id="begDateColumn" text="Start date" />
-                        <TableColumn prefWidth="75.0" fx:id="endDateColumn" text="End date" />
-                        <TableColumn prefWidth="75.0" fx:id="endDateRealColumn" text="Real end date" />
+                        <TableColumn fx:id="idColumn" prefWidth="50.0" text="Id" />
+                        <TableColumn fx:id="nameColumn" prefWidth="100.0" text="Name" />
+                        <TableColumn fx:id="costColumn" prefWidth="75.0" text="Cost" />
+                        <TableColumn fx:id="departmentColumn" prefWidth="100.0" text="Department" />
+                        <TableColumn fx:id="begDateColumn" prefWidth="75.0" text="Start date" />
+                        <TableColumn fx:id="endDateColumn" prefWidth="75.0" text="End date" />
+                        <TableColumn fx:id="endDateRealColumn" prefWidth="75.0" text="Real end date" />
                      </columns></TableView>
                   <GridPane>
                     <columnConstraints>

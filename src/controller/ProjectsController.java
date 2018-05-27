@@ -23,7 +23,7 @@ public class ProjectsController {
     @FXML
     private TableColumn<Project, Double> costColumn;
     @FXML
-    private TableColumn<Project, Integer> departmentColumn;
+    private TableColumn<Project, String> departmentColumn;
     @FXML
     private TableColumn<Project, Date> begDateColumn;
     @FXML
@@ -48,7 +48,7 @@ public class ProjectsController {
         idColumn.setCellValueFactory(cellData -> cellData.getValue().idProperty().asObject());
         nameColumn.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
         costColumn.setCellValueFactory(cellData -> cellData.getValue().costProperty().asObject());
-        departmentColumn.setCellValueFactory(cellData -> cellData.getValue().department_idProperty().asObject());
+        departmentColumn.setCellValueFactory(cellData -> cellData.getValue().departmentProperty());
         begDateColumn.setCellValueFactory(cellData -> cellData.getValue().date_begProperty());
         endDateColumn.setCellValueFactory(cellData -> cellData.getValue().date_endProperty());
         endDateRealColumn.setCellValueFactory(cellData -> cellData.getValue().date_end_realProperty());
