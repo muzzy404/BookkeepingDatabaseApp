@@ -8,8 +8,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ProjectDAO {
-    private static String PROJECTS_T = "BOOKKEEPING.PROJECTS";
-    private static String DEPARTMENTS_T = "BOOKKEEPING.DEPARTMENTS";
+    protected static final  String PROJECTS_T = "BOOKKEEPING.PROJECTS";
+    private static final String DEPARTMENTS_T = DepartmentDAO.DEPARTMENTS_T;
 
     public static ObservableList<Project> selectAll() throws SQLException {
 
@@ -17,12 +17,13 @@ public class ProjectDAO {
                 .append(PROJECTS_T + "." + Project.ID   + ", ")
                 .append(PROJECTS_T + "." + Project.NAME + ", ")
                 .append(PROJECTS_T + "." + Project.COST + ", ")
-                .append(DEPARTMENTS_T + ".NAME" + " AS " + Project.DEPARTMENT + ", ")
+                .append(DEPARTMENTS_T + "." + Department.NAME + " AS " + Project.DEPARTMENT + ", ")
                 .append(PROJECTS_T + "." + Project.DATE_BEG + ", ")
                 .append(PROJECTS_T + "." + Project.DATE_END + ", ")
                 .append(PROJECTS_T + "." + Project.DATE_END_REAL)
                 .append(" FROM " + PROJECTS_T + ", " + DEPARTMENTS_T)
-                .append(" WHERE " + PROJECTS_T + "." + Project.DEPARTMENT_ID + " = " + DEPARTMENTS_T + ".ID");
+                .append(" WHERE " + PROJECTS_T + "." + Project.DEPARTMENT_ID + " = " +
+                        DEPARTMENTS_T + "." + Department.ID);
 
         ResultSet resultSet = DBUtil.dbExecuteSelect(select.toString());
         return getProjectsList(resultSet);
@@ -42,7 +43,6 @@ public class ProjectDAO {
                     set.getDate(Project.DATE_END_REAL));
             list.add(project);
         }
-
         return list;
     }
 }

@@ -3,8 +3,11 @@ package controller;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import model.Department;
+import model.DepartmentDAO;
 import model.Project;
 import model.ProjectDAO;
 
@@ -12,6 +15,9 @@ import java.sql.Date;
 import java.sql.SQLException;
 
 public class ProjectsController {
+
+    @FXML
+    private ComboBox comboBoxDepartments;
 
     @FXML
     private TableView projectsTable;
@@ -35,7 +41,6 @@ public class ProjectsController {
     private void showAllProjects(ActionEvent actionEvent) {
         try {
             ObservableList<Project> projectsList = ProjectDAO.selectAll();
-            System.out.println(projectsList.size());
             projectsTable.setItems(projectsList);
         } catch (SQLException e) {
             System.out.println("showAllProjects ERROR: " + e.getSQLState());
@@ -54,5 +59,20 @@ public class ProjectsController {
         endDateRealColumn.setCellValueFactory(cellData -> cellData.getValue().date_end_realProperty());
 
         idColumn.setVisible(false);
+        showAllProjects(null);
+
+        updateDepartmentsComboBox();
+    }
+
+    private void updateDepartmentsComboBox() {
+        try {
+            ObservableList<Department> departments = DepartmentDAO.selectAll();
+            for(Department department : departments) {
+                comboBoxDepartments.getItems().add(department.getName());
+            }
+        } catch (SQLException e) {
+            System.out.println("Departments update ERROR " + e.getSQLState());
+            e.printStackTrace();
+        }
     }
 }
