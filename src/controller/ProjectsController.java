@@ -9,14 +9,17 @@ import model.DepartmentDAO;
 import model.Project;
 import model.ProjectDAO;
 
+import java.sql.Array;
 import java.sql.Date;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 public class ProjectsController {
     private static final String DATE_FORMAT = "MM/dd/YYYY";
     private DateTimeFormatter formatter;
+
+    private ArrayList<Integer> departmentsIds;
 
     @FXML
     private TextField fieldName;
@@ -65,12 +68,15 @@ public class ProjectsController {
             if (name.length() == 0) throw new Exception("Null project name");
 
             String cost = String.valueOf(Double.valueOf(fieldCost.getText()));
-            String department = comboBoxDepartments.getValue().toString();
+            int department = comboBoxDepartments.getSelectionModel().getSelectedIndex();
             String dateBegin = datePickerBeginDate.getValue().format(formatter);
             String dateEnd = datePickerEndDate.getValue().format(formatter);
 
-            System.out.println(name + ", " + cost + ", " + department + ", " +
-                    dateBegin + ", " + dateEnd);
+            System.out.println(name + ", " +
+                    cost + ", " +
+                    String.valueOf(departmentsIds.get(department)) + ", " +
+                    dateBegin + ", " +
+                    dateEnd);
 
             System.out.println(dateBegin);
             System.out.println(dateEnd);
@@ -104,8 +110,11 @@ public class ProjectsController {
     private void updateDepartmentsComboBox() {
         try {
             ObservableList<Department> departments = DepartmentDAO.selectAll();
+            departmentsIds = new ArrayList<>();
+
             for(Department department : departments) {
                 comboBoxDepartments.getItems().add(department.getName());
+                departmentsIds.add(department.getId());
             }
         } catch (SQLException e) {
             System.out.println("Departments update ERROR " + e.getSQLState());
