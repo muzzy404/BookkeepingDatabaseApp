@@ -9,7 +9,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane prefHeight="480.0" prefWidth="840.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProjectsController">
    <children>
       <BorderPane layoutX="185.0" layoutY="109.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
@@ -71,24 +70,19 @@
                         <Insets bottom="5.0" top="5.0" />
                      </GridPane.margin>
                   </Button>
-                  <Label text="Project ID" GridPane.rowIndex="7" />
-                  <TextField promptText="id of project to update" GridPane.columnIndex="1" GridPane.rowIndex="7">
-                     <GridPane.margin>
-                        <Insets bottom="5.0" left="5.0" top="5.0" />
-                     </GridPane.margin>
-                  </TextField>
-                  <Button mnemonicParsing="false" text="Update" GridPane.rowIndex="8" />
-                  <Button mnemonicParsing="false" text="Update" GridPane.rowIndex="9" />
-                  <DatePicker prefWidth="200.0" promptText="real end date of project" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                  <Button mnemonicParsing="false" prefWidth="100.0" text="Update" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                  <DatePicker prefWidth="200.0" promptText="real end date of project" GridPane.columnIndex="1" GridPane.rowIndex="8">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" top="5.0" />
                      </GridPane.margin>
                   </DatePicker>
-                  <TextField promptText="new cost of project" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                  <TextField promptText="new cost of project" GridPane.columnIndex="1" GridPane.rowIndex="7">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" top="5.0" />
                      </GridPane.margin>
                   </TextField>
+                  <Label text="Cost" GridPane.rowIndex="7" />
+                  <Label text="End date (real)" GridPane.rowIndex="8" />
                </children>
                <BorderPane.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
