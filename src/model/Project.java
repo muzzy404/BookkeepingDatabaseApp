@@ -16,7 +16,7 @@ public class Project {
     private IntegerProperty id = new SimpleIntegerProperty();
     private StringProperty name = new SimpleStringProperty();
     private DoubleProperty cost = new SimpleDoubleProperty();
-    private IntegerProperty department_id = new SimpleIntegerProperty();
+    private IntegerProperty department_id = new SimpleIntegerProperty(); //TODO: chage to String
     private SimpleObjectProperty<Date> date_beg = new SimpleObjectProperty<>();
     private SimpleObjectProperty<Date> date_end = new SimpleObjectProperty<>();
     private SimpleObjectProperty<Date> date_end_real = new SimpleObjectProperty<>();
@@ -36,22 +36,29 @@ public class Project {
 
     public void setId(int id) { this.id.set(id); }
     public int  getId()       { return id.get(); }
+    public IntegerProperty idProperty() { return id; }
 
     public void setName(String name) { this.name.set(name); }
     public String getName()          { return name.get();   }
+    public StringProperty nameProperty() { return name; }
 
     public void setCost(double cost) { this.cost.set(cost); }
     public double getCost()          { return cost.get();   }
+    public DoubleProperty costProperty() { return cost; }
 
-    public void setDepartment_id(int dep_id) { this.department_id.set(dep_id); }
-    public int getDepartment_id()            { return department_id.get();     }
+    public void setDepartment_id(int dep_id) { this.department_id.set(dep_id); } //TODO: chage to String
+    public int getDepartment_id()            { return department_id.get();     } //TODO: chage to String
+    public IntegerProperty department_idProperty() { return department_id; }     //TODO: chage to String
 
     public void setDate_beg(Date date) { this.date_beg.set(date); }
     public Date getDate_beg()          { return date_beg.get();   }
+    public SimpleObjectProperty<Date> date_begProperty() { return date_beg; }
 
     public void setDate_end(Date date) { this.date_end.set(date); }
     public Date getDate_end()          { return date_end.get();   }
+    public SimpleObjectProperty<Date> date_endProperty() { return date_end; }
 
     public void setDate_end_real(Date date) { this.date_end_real.set(date); }
     public Date getDate_end_real()          { return date_end_real.get();   }
+    public SimpleObjectProperty<Date> date_end_realProperty() { return date_end_real; }
 }
