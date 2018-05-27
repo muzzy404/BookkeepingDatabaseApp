@@ -25,6 +25,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
                   <RowConstraints minHeight="10.0" vgrow="ALWAYS" />
               </rowConstraints>
                <children>
@@ -66,19 +67,20 @@
                         <Insets bottom="5.0" top="5.0" />
                      </GridPane.margin>
                   </Button>
-                  <Button mnemonicParsing="false" prefWidth="100.0" text="Update" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-                  <DatePicker prefWidth="200.0" promptText="real end date of project" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                  <Button mnemonicParsing="false" prefWidth="100.0" text="Update" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                  <DatePicker prefWidth="200.0" promptText="real end date of project" GridPane.columnIndex="1" GridPane.rowIndex="9">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" top="5.0" />
                      </GridPane.margin>
                   </DatePicker>
-                  <TextField promptText="new cost of project" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                  <TextField promptText="new cost of project" GridPane.columnIndex="1" GridPane.rowIndex="8">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" top="5.0" />
                      </GridPane.margin>
                   </TextField>
-                  <Label text="Cost" GridPane.rowIndex="7" />
-                  <Label text="End date (real)" GridPane.rowIndex="8" />
+                  <Label text="Cost" GridPane.rowIndex="8" />
+                  <Label text="End date (real)" GridPane.rowIndex="9" />
+                  <Label fx:id="textSelected" text="Selected project" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                </children>
                <BorderPane.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -110,21 +112,12 @@
                       <RowConstraints vgrow="SOMETIMES" />
                     </rowConstraints>
                   </GridPane>
-                  <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <Button fx:id="btnShowAllProjects" mnemonicParsing="false" onAction="#showAllProjects" text="Show all projects">
-                           <HBox.margin>
-                              <Insets left="5.0" right="5.0" top="5.0" />
-                           </HBox.margin>
-                        </Button>
-                     </children>
-                  </HBox>
-                  <Label text="Result console">
+                  <Button fx:id="btnShowAllProjects" alignment="CENTER" mnemonicParsing="false" onAction="#showAllProjects" text="Show all projects">
                      <VBox.margin>
-                        <Insets top="10.0" />
+                        <Insets top="5.0" />
                      </VBox.margin>
-                  </Label>
-                  <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" />
+                  </Button>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" />
                </children>
             </VBox>
          </center>

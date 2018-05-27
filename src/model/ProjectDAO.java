@@ -29,6 +29,24 @@ public class ProjectDAO {
         return getProjectsList(resultSet);
     }
 
+    public static void insertProject(String name, String cost, int dep, String beginDate, String endDate) throws SQLException {
+        StringBuilder query = new StringBuilder("INSERT INTO " + PROJECTS_T + " (")
+                .append(Project.NAME + ", ")
+                .append(Project.COST + ", ")
+                .append(Project.DEPARTMENT_ID + ", ")
+                .append(Project.DATE_BEG + ", ")
+                .append(Project.DATE_END + ") VALUES (")
+                // values
+                .append("'" + name + "', ")
+                .append(cost + ", ")
+                .append(String.valueOf(dep) + ", ")
+                .append("'" + beginDate + "', ")
+                .append("'" + endDate + "')");
+        System.out.println(query.toString());
+
+        DBUtil.dbExecuteUpdate(query.toString());
+    }
+
     private static ObservableList<Project> getProjectsList(ResultSet set) throws SQLException {
         ObservableList<Project> list = FXCollections.observableArrayList();
 

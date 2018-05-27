@@ -8,15 +8,15 @@ import model.Department;
 import model.DepartmentDAO;
 import model.Project;
 import model.ProjectDAO;
+import util.DBUtil;
 
-import java.sql.Array;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class ProjectsController {
-    private static final String DATE_FORMAT = "MM/dd/YYYY";
+    private static final String DATE_FORMAT = "dd-MMM-YY";
     private DateTimeFormatter formatter;
 
     private ArrayList<Integer> departmentsIds;
@@ -72,14 +72,13 @@ public class ProjectsController {
             String dateBegin = datePickerBeginDate.getValue().format(formatter);
             String dateEnd = datePickerEndDate.getValue().format(formatter);
 
-            System.out.println(name + ", " +
-                    cost + ", " +
-                    String.valueOf(departmentsIds.get(department)) + ", " +
-                    dateBegin + ", " +
-                    dateEnd);
-
-            System.out.println(dateBegin);
-            System.out.println(dateEnd);
+            ProjectDAO.insertProject(name, cost, department, dateBegin, dateEnd);
+            showAllProjects(null);
+        } catch (SQLException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Insert Error");
+            alert.setContentText(e.getSQLState());
         } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Warning");

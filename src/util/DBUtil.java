@@ -69,5 +69,22 @@ public class DBUtil {
     }
 
     // TODO: dbExecuteUpdate
+    public static void dbExecuteUpdate(String query) throws SQLException {
+        Statement statement = null;
+
+        try {
+            dbConnect();
+
+            statement = connection.createStatement();
+            statement.executeUpdate(query);
+        } catch(Exception e) {
+            System.out.println("Problem occurred at execute UPDATE operation.");
+            e.printStackTrace();
+        } finally {
+            if (statement != null) statement.close();
+
+            dbDisconnect();
+        }
+    }
 
 }
