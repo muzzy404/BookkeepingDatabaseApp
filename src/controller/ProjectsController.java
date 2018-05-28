@@ -68,7 +68,7 @@ public class ProjectsController {
             if (name.length() == 0) throw new Exception("Null project name");
 
             String cost = String.valueOf(Double.valueOf(fieldCost.getText()));
-            int department = comboBoxDepartments.getSelectionModel().getSelectedIndex();
+            int department = departmentsIds.get(comboBoxDepartments.getSelectionModel().getSelectedIndex());
             String dateBegin = datePickerBeginDate.getValue().format(formatter);
             String dateEnd = datePickerEndDate.getValue().format(formatter);
 
