@@ -15,8 +15,9 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Window">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#openProjectsWindow" text="Projects" />
+                  <MenuItem mnemonicParsing="false" onAction="#openProjectsWindow" text="Projects" />
                   <MenuItem mnemonicParsing="false" onAction="#openEmployeesWindow" text="Employees" />
+                  <MenuItem mnemonicParsing="false" onAction="#openDepartmentsWindow" text="Departments" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">

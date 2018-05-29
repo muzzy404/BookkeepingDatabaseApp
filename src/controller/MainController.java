@@ -64,4 +64,9 @@ public class MainController extends Application {
         root.getChildren().remove(root.getCenter());
         root.setCenter(FXMLLoader.load(getClass().getResource("/view/employees_layout.fxml")));
     }
+
+    public void openDepartmentsWindow(ActionEvent actionEvent) throws IOException {
+        root.getChildren().remove(root.getCenter());
+        root.setCenter(FXMLLoader.load(getClass().getResource("/view/departments_layout.fxml")));
+    }
 }

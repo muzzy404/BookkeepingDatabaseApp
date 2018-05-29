@@ -22,7 +22,6 @@ public class AppUtil {
     }
 
     public static ArrayList<Integer> updateDepartmentsComboBox(ComboBox comboBoxDepartments) {
-        System.out.println("UPDATE!!!");
         ArrayList<Integer> departmentsIds = new ArrayList<>();
 
         try {
@@ -31,8 +30,6 @@ public class AppUtil {
             for(Department department : departments) {
                 comboBoxDepartments.getItems().add(department.getName());
                 departmentsIds.add(department.getId());
-
-                System.out.println(departmentsIds.size());
             }
             if (departments.size() > 0) comboBoxDepartments.getSelectionModel().select(0);
         } catch (SQLException e) {

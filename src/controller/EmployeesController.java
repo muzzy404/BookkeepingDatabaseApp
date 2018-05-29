@@ -167,9 +167,7 @@ public class EmployeesController {
 
         showAllEmployees();
 
-        departmentsIds = new ArrayList<>();
         departmentsIds = AppUtil.updateDepartmentsComboBox(comboBoxDepartments);
-        System.out.println(departmentsIds.size());
     }
 
     public void employeeSelected(MouseEvent mouseEvent) {
