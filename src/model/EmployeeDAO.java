@@ -22,7 +22,7 @@ public class EmployeeDAO {
         String depField = DEPARTMENTS_T + ".";
 
         StringBuilder query = new StringBuilder("SELECT ")
-                .append(empField + Employee.ID + ", ")
+                .append(DEPARTMENTS_EMPLOYEES_T + "." + EmployeeDepartment.ID + ", ")
                 .append(empField + Employee.LAST_NAME + ", ")
                 .append(empField + Employee.FIRST_NAME + ", ")
                 .append(empField + Employee.PATRONYMIC + ", ")
@@ -100,7 +100,7 @@ public class EmployeeDAO {
 
         while(set.next()) {
             EmployeeDepartment employeeDepartment = new EmployeeDepartment(
-                    set.getInt(Employee.ID),
+                    set.getInt(EmployeeDepartment.ID),
                     set.getString(Employee.LAST_NAME),
                     set.getString(Employee.FIRST_NAME),
                     set.getString(Employee.LAST_NAME),

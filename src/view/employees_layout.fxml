@@ -34,7 +34,7 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-            <TableView fx:id="employeesInDepsTable" onMouseClicked="#employeeWithDepSelected" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+            <TableView fx:id="employeesInDepsTable" onMouseClicked="#empDepRecordSelected" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
               <columns>
                   <TableColumn fx:id="columnIdEmpDep" prefWidth="75.0" text="Id" />
                   <TableColumn fx:id="columnLastNameEmpDep" prefWidth="75.0" text="Last name" />
@@ -134,7 +134,7 @@
                         <Insets top="20.0" />
                      </padding>
                   </Label>
-                  <Label fx:id="selectedFromDepsEmp" text="not selected">
+                  <Label fx:id="selectedRecordDepsEmp" text="not selected">
                      <VBox.margin>
                         <Insets bottom="5.0" />
                      </VBox.margin>
@@ -142,6 +142,11 @@
                   <Button fx:id="btnDeleteFromDep" mnemonicParsing="false" prefWidth="150.0" text="Delete from department">
                      <VBox.margin>
                         <Insets />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="btnSelectedEmpDep" minWidth="100.0" mnemonicParsing="false" onAction="#clearSelectedEmpDep" text="Clear">
+                     <VBox.margin>
+                        <Insets top="5.0" />
                      </VBox.margin>
                   </Button>
                </children>

@@ -1,6 +1,5 @@
 package controller;
 
-import javafx.beans.property.DoubleProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -16,8 +15,8 @@ public class EmployeesController {
     static private final int NO_ID = -1;
     static private final String NOT_SELECTED = "not selected";
 
-    private int selectedEmpId    = NO_ID;
-    private int selectedEmpDepId = NO_ID;
+    private int selectedEmpId        = NO_ID;
+    private int selectedRecordEmpDep = NO_ID;
 
     @FXML
     private TableView employeesTable;
@@ -62,7 +61,7 @@ public class EmployeesController {
     @FXML
     private Label selectedFromEmployees;
     @FXML
-    private Label selectedFromDepsEmp;
+    private Label selectedRecordDepsEmp;
 
     private void showAllEmployees() {
         try {
@@ -182,14 +181,15 @@ public class EmployeesController {
         fieldSalary.setText(String.format("%.2f", selected.getSalary()));
     }
 
-    public void employeeWithDepSelected(MouseEvent mouseEvent) {
+    public void empDepRecordSelected(MouseEvent mouseEvent) {
         EmployeeDepartment selected = (EmployeeDepartment) employeesInDepsTable.getSelectionModel().getSelectedItem();
         if (selected == null) return;
 
-        selectedEmpDepId = selected.getId();
-        selectedFromDepsEmp.setText(selected.getLastName()  + " " +
+        selectedRecordEmpDep = selected.getId();
+        selectedRecordDepsEmp.setText(selected.getLastName()  + " " +
                                     selected.getFirstName() + " " +
                                     selected.getPatronymic());
+        System.out.println(selectedRecordEmpDep);
     }
 
     @FXML
@@ -205,8 +205,9 @@ public class EmployeesController {
         selectedFromEmployees.setText(NOT_SELECTED);
     }
 
+    @FXML
     private void clearSelectedEmpDep() {
-        selectedEmpDepId = NO_ID;
-        selectedFromDepsEmp.setText(NOT_SELECTED);
+        selectedRecordEmpDep = NO_ID;
+        selectedRecordDepsEmp.setText(NOT_SELECTED);
     }
 }

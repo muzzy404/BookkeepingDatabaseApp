@@ -6,6 +6,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class EmployeeDepartment {
+    protected static final String ID = "ID";
     protected static final String EMPLOYEE_ID = "EMPLOYEE_ID";
     protected static final String DEPARTMENT_ID = "DEPARTMENT_ID";
 
