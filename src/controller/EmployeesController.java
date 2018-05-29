@@ -1,5 +1,6 @@
 package controller;
 
+import javafx.beans.property.DoubleProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -87,7 +88,22 @@ public class EmployeesController {
     }
 
     public void addNewEmployee(ActionEvent actionEvent) {
+        try {
+            String lastName = fieldLastName.getText();
+            String firstName = fieldFirstName.getText();
+            String patronymic = fieldPatronymic.getText();
+            String position = fieldPosition.getText();
+            String salary = String.valueOf(Double.valueOf(fieldSalary.getText()));
 
+            if (lastName.length()   == 0 ||
+                firstName.length()  == 0 ||
+                patronymic.length() == 0 ||
+                position.length()   == 0) throw new Exception("All fields must contain data.");
+
+            EmployeeDAO.insertEmployee(lastName, firstName, patronymic, position, salary);
+        } catch (Exception e) {
+            AppUtil.showAlert(Alert.AlertType.WARNING, "Warning", "Insert failed", e.getMessage());
+        }
         showAllEmployees();
     }
 

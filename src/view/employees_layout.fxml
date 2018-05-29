@@ -65,17 +65,11 @@
                   <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label text="First name" />
-                  <Label text="Last name" GridPane.rowIndex="1" />
+                  <Label text="First name" GridPane.rowIndex="1" />
                   <Label text="Patronymic" GridPane.rowIndex="2" />
                   <Label text="Position" GridPane.rowIndex="3" />
                   <Label text="Salary" GridPane.rowIndex="4" />
-                  <TextField fx:id="fieldFirstName" promptText="employee first name" GridPane.columnIndex="1">
-                     <GridPane.margin>
-                        <Insets left="5.0" right="5.0" />
-                     </GridPane.margin>
-                  </TextField>
-                  <TextField fx:id="fieldLastName" promptText="employee last name" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <TextField fx:id="fieldLastName" promptText="employee last name" GridPane.columnIndex="1">
                      <GridPane.margin>
                         <Insets left="5.0" right="5.0" />
                      </GridPane.margin>
@@ -111,6 +105,12 @@
                      </GridPane.margin>
                   </Button>
                   <Button fx:id="btnClearFields" minWidth="100.0" mnemonicParsing="false" onAction="#clearSelectedEmployee" text="Clear" GridPane.rowIndex="5" />
+                  <TextField fx:id="fieldFirstName" promptText="employee first name" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <Label text="Last name" />
                </children>
             </GridPane>
             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">

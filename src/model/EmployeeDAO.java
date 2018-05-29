@@ -38,12 +38,27 @@ public class EmployeeDAO {
     }
 
     public static void insertEmployee(String lastName, String firstName, String patronymic,
-                                     String position, String salary) {
-        //TODO: insert new epm
+                                      String position, String salary) throws SQLException {
+        String query = new String("INSERT INTO " + EMPLOYEES_T + " (" +
+                Employee.LAST_NAME  + ", "     +
+                Employee.FIRST_NAME + ", "     +
+                Employee.PATRONYMIC + ", "     +
+                Employee.POSITION   + ", "     +
+                Employee.SALARY + ") VALUES (" +
+                // values
+                "'" + lastName   + "', " +
+                "'" + firstName  + "', " +
+                "'" + patronymic + "', " +
+                "'" + position   + "', " +
+                salary + ")");
+        System.out.println(query);
+
+        DBUtil.dbExecuteUpdate(query);
     }
 
-    public static void updateEmployee(String lastName, String firstName, String patronymic,
-                              String position, String salary) {
+    public static void updateEmployee(int id,
+                                      String lastName, String firstName, String patronymic,
+                                      String position, String salary) {
         //TODO: update epm
     }
 
