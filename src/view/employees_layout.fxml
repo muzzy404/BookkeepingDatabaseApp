@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="480.0" prefWidth="840.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="480.0" prefWidth="840.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EmployeesController">
    <children>
       <GridPane layoutX="194.0" layoutY="131.0" prefHeight="480.0" prefWidth="840.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
         <columnConstraints>
@@ -19,13 +18,13 @@
           <RowConstraints maxHeight="-Infinity" minHeight="10.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TableView prefHeight="200.0" prefWidth="200.0">
+            <TableView fx:id="employeesTable" prefHeight="200.0" prefWidth="200.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="Last name" />
-                <TableColumn prefWidth="75.0" text="First name" />
-                  <TableColumn prefWidth="75.0" text="Pather name" />
-                  <TableColumn prefWidth="75.0" text="Position" />
-                  <TableColumn prefWidth="75.0" text="Salary" />
+                <TableColumn fx:id="columnLastNameEmp" prefWidth="75.0" text="Last name" />
+                <TableColumn fx:id="columnFirstNameEmp" prefWidth="75.0" text="First name" />
+                  <TableColumn fx:id="columnPatherNameEmp" prefWidth="75.0" text="Pather name" />
+                  <TableColumn fx:id="columnPosition" prefWidth="75.0" text="Position" />
+                  <TableColumn fx:id="columnSalary" prefWidth="75.0" text="Salary" />
               </columns>
                <GridPane.margin>
                   <Insets bottom="5.0" right="5.0" />
@@ -37,12 +36,12 @@
                   <Insets bottom="5.0" />
                </padding>
             </TableView>
-            <TableView prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+            <TableView fx:id="EmployeesInDepsTable" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
               <columns>
-                  <TableColumn prefWidth="75.0" text="Last name" />
-                  <TableColumn prefWidth="75.0" text="First name" />
-                  <TableColumn prefWidth="75.0" text="Pather name" />
-                  <TableColumn prefWidth="75.0" text="Department" />
+                  <TableColumn fx:id="columnLastNameEmpDep" prefWidth="75.0" text="Last name" />
+                  <TableColumn fx:id="columnFirstNameEmpDep" prefWidth="75.0" text="First name" />
+                  <TableColumn fx:id="columnPatherNameEmpDep" prefWidth="75.0" text="Pather name" />
+                  <TableColumn fx:id="columnDepartment" prefWidth="75.0" text="Department" />
               </columns>
                <GridPane.margin>
                   <Insets bottom="5.0" />
@@ -72,42 +71,42 @@
                   <Label text="Pather name" GridPane.rowIndex="2" />
                   <Label text="Position" GridPane.rowIndex="3" />
                   <Label text="Salary" GridPane.rowIndex="4" />
-                  <TextField GridPane.columnIndex="1">
+                  <TextField fx:id="fieldFirstName" GridPane.columnIndex="1">
                      <GridPane.margin>
                         <Insets left="5.0" right="5.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <TextField fx:id="fieldLastName" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets left="5.0" right="5.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <TextField fx:id="fieldPatherName" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <GridPane.margin>
                         <Insets left="5.0" right="5.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="3">
+                  <TextField fx:id="fieldPosition" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <GridPane.margin>
                         <Insets left="5.0" right="5.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="4">
+                  <TextField fx:id="fieldSalary" GridPane.columnIndex="1" GridPane.rowIndex="4">
                      <GridPane.margin>
                         <Insets left="5.0" right="5.0" />
                      </GridPane.margin>
                   </TextField>
-                  <Button minWidth="100.0" mnemonicParsing="false" text="Delete" GridPane.rowIndex="6">
+                  <Button fx:id="btnDeleteEmp" minWidth="100.0" mnemonicParsing="false" text="Delete" GridPane.rowIndex="6">
                      <GridPane.margin>
                         <Insets />
                      </GridPane.margin>
                   </Button>
-                  <Button minWidth="100.0" mnemonicParsing="false" text="Add" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                  <Button fx:id="btnAddEmp" minWidth="100.0" mnemonicParsing="false" text="Add" GridPane.columnIndex="1" GridPane.rowIndex="5">
                      <GridPane.margin>
                         <Insets right="5.0" />
                      </GridPane.margin>
                   </Button>
-                  <Button minWidth="100.0" mnemonicParsing="false" text="Update" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                  <Button fx:id="btnUpdateEmp" minWidth="100.0" mnemonicParsing="false" text="Update" GridPane.columnIndex="1" GridPane.rowIndex="6">
                      <GridPane.margin>
                         <Insets right="5.0" />
                      </GridPane.margin>
@@ -116,12 +115,35 @@
             </GridPane>
             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <Label text="Selected person" />
-                  <ComboBox prefWidth="400.0">
+                  <Label layoutX="10.0" layoutY="10.0" text="Employees table selected:">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="selectedFromEmployees" text="Selected person" />
+                  <ComboBox fx:id="comboBoxDepartments" prefWidth="400.0">
                      <VBox.margin>
                         <Insets bottom="5.0" top="5.0" />
                      </VBox.margin></ComboBox>
-                  <Button mnemonicParsing="false" text="Add to department" />
+                  <Button fx:id="btnAddToDep" mnemonicParsing="false" prefWidth="150.0" text="Add to department" />
+                  <Label text="Departments managment table selected:">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <padding>
+                        <Insets top="20.0" />
+                     </padding>
+                  </Label>
+                  <Label fx:id="selectedFromDepsEmp" text="Selected person">
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Button fx:id="btnDeleteFromDep" mnemonicParsing="false" prefWidth="150.0" text="Delete from department">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Button>
                </children>
             </VBox>
          </children>
