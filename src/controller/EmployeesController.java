@@ -2,9 +2,8 @@ package controller;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import model.Department;
 import model.Employee;
 import model.EmployeeDAO;
@@ -13,6 +12,12 @@ import model.EmployeeDepartment;
 import java.sql.SQLException;
 
 public class EmployeesController {
+    static private final int NO_ID = -1;
+    static private final String NOT_SELECTED = "not selected";
+
+    private int selectedEmpId    = NO_ID;
+    private int selectedEmpDepId = NO_ID;
+
     @FXML
     private TableView employeesTable;
     @FXML
@@ -41,6 +46,22 @@ public class EmployeesController {
     private TableColumn<EmployeeDepartment, String> columnPatronymicEmpDep;
     @FXML
     private TableColumn<EmployeeDepartment, String> columnDepartment;
+
+    @FXML
+    private TextField fieldFirstName;
+    @FXML
+    private TextField fieldLastName;
+    @FXML
+    private TextField fieldPatronymic;
+    @FXML
+    private TextField fieldPosition;
+    @FXML
+    private TextField fieldSalary;
+
+    @FXML
+    private Label selectedFromEmployees;
+    @FXML
+    private Label selectedFromDepsEmp;
 
     private void showAllEmployees() {
         try {
@@ -98,5 +119,48 @@ public class EmployeesController {
         showAllEmployees();
 
         // TODO: deps combo box
+    }
+
+    public void employeeSelected(MouseEvent mouseEvent) {
+        Employee selected = (Employee) employeesTable.getSelectionModel().getSelectedItem();
+        if (selected == null) return;
+
+        selectedEmpId = selected.getId();
+        selectedFromEmployees.setText(selected.getLastName()  + " " +
+                                      selected.getFirstName() + " " +
+                                      selected.getPatronymic());
+
+        fieldFirstName.setText(selected.getFirstName());
+        fieldLastName.setText(selected.getLastName());
+        fieldPatronymic.setText(selected.getPatronymic());
+        fieldPosition.setText(selected.getPosition());
+        fieldSalary.setText(String.format("%.2f", selected.getSalary()));
+    }
+
+    public void employeeWithDepSelected(MouseEvent mouseEvent) {
+        EmployeeDepartment selected = (EmployeeDepartment) employeesInDepsTable.getSelectionModel().getSelectedItem();
+        if (selected == null) return;
+
+        selectedEmpDepId = selected.getId();
+        selectedFromDepsEmp.setText(selected.getLastName()  + " " +
+                                    selected.getFirstName() + " " +
+                                    selected.getPatronymic());
+    }
+
+    private void clearSelectedEmployee() {
+        selectedEmpId = NO_ID;
+
+        fieldFirstName.clear();
+        fieldLastName.clear();
+        fieldPatronymic.clear();
+        fieldPosition.clear();
+        fieldSalary.clear();
+
+        selectedFromEmployees.setText(NOT_SELECTED);
+    }
+
+    private void clearSelectedEmpDep() {
+        selectedEmpDepId = NO_ID;
+        selectedFromDepsEmp.setText(NOT_SELECTED);
     }
 }

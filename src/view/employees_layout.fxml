@@ -18,7 +18,7 @@
           <RowConstraints maxHeight="-Infinity" minHeight="10.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TableView fx:id="employeesTable" prefHeight="200.0" prefWidth="200.0">
+            <TableView fx:id="employeesTable" onMouseClicked="#employeeSelected" prefHeight="200.0" prefWidth="200.0">
               <columns>
                   <TableColumn fx:id="columnIdEmp" prefWidth="75.0" text="Id" />
                 <TableColumn fx:id="columnLastNameEmp" prefWidth="75.0" text="Last name" />
@@ -34,7 +34,7 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-            <TableView fx:id="employeesInDepsTable" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+            <TableView fx:id="employeesInDepsTable" onMouseClicked="#employeeWithDepSelected" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
               <columns>
                   <TableColumn fx:id="columnIdEmpDep" prefWidth="75.0" text="Id" />
                   <TableColumn fx:id="columnLastNameEmpDep" prefWidth="75.0" text="Last name" />
@@ -70,27 +70,27 @@
                   <Label text="Patronymic" GridPane.rowIndex="2" />
                   <Label text="Position" GridPane.rowIndex="3" />
                   <Label text="Salary" GridPane.rowIndex="4" />
-                  <TextField fx:id="fieldFirstName" GridPane.columnIndex="1">
+                  <TextField fx:id="fieldFirstName" promptText="employee first name" GridPane.columnIndex="1">
                      <GridPane.margin>
                         <Insets left="5.0" right="5.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="fieldLastName" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <TextField fx:id="fieldLastName" promptText="employee last name" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets left="5.0" right="5.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="fieldPatronymic" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <TextField fx:id="fieldPatronymic" promptText="employee patronymic" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <GridPane.margin>
                         <Insets left="5.0" right="5.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="fieldPosition" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                  <TextField fx:id="fieldPosition" promptText="employee position" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <GridPane.margin>
                         <Insets left="5.0" right="5.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="fieldSalary" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                  <TextField fx:id="fieldSalary" promptText="employee salary" GridPane.columnIndex="1" GridPane.rowIndex="4">
                      <GridPane.margin>
                         <Insets left="5.0" right="5.0" />
                      </GridPane.margin>
