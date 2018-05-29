@@ -4,11 +4,11 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import model.Department;
 import model.DepartmentDAO;
 import model.Project;
 import model.ProjectDAO;
-import util.DBUtil;
 
 import java.sql.Date;
 import java.sql.SQLException;
@@ -16,8 +16,11 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class ProjectsController {
+    private static final int NO_ID = -1;
     private static final String DATE_FORMAT = "dd-MMM-YY";
     private DateTimeFormatter formatter;
+
+    private int selectedId = NO_ID;
 
     private ArrayList<Integer> departmentsIds;
 
@@ -31,6 +34,13 @@ public class ProjectsController {
     private DatePicker datePickerBeginDate;
     @FXML
     private DatePicker datePickerEndDate;
+
+    @FXML
+    private TextField fieldNewCost;
+    @FXML
+    private DatePicker datePickerEndDateReal;
+    @FXML
+    private Label textSelected;
 
     @FXML
     private TableView projectsTable;
@@ -82,10 +92,14 @@ public class ProjectsController {
         } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Warning");
-            alert.setHeaderText("All fields must be correctly filled in contain data");
+            alert.setHeaderText("All fields must be correctly filled and contain data");
             alert.setContentText("Please, fill all data fields correctly to add a new project to Projects table.");
             alert.show();
+            return;
         }
+
+        clearAddNewFields();
+        clearSelected();
     }
 
     @FXML
@@ -119,5 +133,25 @@ public class ProjectsController {
             System.out.println("Departments update ERROR " + e.getSQLState());
             e.printStackTrace();
         }
+    }
+
+    public void onRowSelected(MouseEvent mouseEvent) {
+        Project selected = (Project) projectsTable.getSelectionModel().getSelectedItem();
+
+        selectedId = selected.getId();
+        textSelected.setText(selected.getName());
+        fieldNewCost.setText(String.valueOf(selected.getCost()));
+        datePickerEndDateReal.setValue(selected.getDate_end().toLocalDate());
+    }
+
+    private void clearAddNewFields() {
+        fieldName.clear();
+        fieldCost.clear();
+    }
+
+    private void clearSelected() {
+        fieldNewCost.setText("");
+        textSelected.setText("");
+        selectedId = NO_ID;
     }
 }

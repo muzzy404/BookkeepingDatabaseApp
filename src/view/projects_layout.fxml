@@ -68,19 +68,19 @@
                      </GridPane.margin>
                   </Button>
                   <Button mnemonicParsing="false" prefWidth="100.0" text="Update" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-                  <DatePicker prefWidth="200.0" promptText="real end date of project" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                  <DatePicker prefWidth="200.0" fx:id="datePickerEndDateReal" promptText="real end date of project" GridPane.columnIndex="1" GridPane.rowIndex="9">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" top="5.0" />
                      </GridPane.margin>
                   </DatePicker>
-                  <TextField promptText="new cost of project" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                  <TextField promptText="new cost of project" fx:id="fieldNewCost" GridPane.columnIndex="1" GridPane.rowIndex="8">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" top="5.0" />
                      </GridPane.margin>
                   </TextField>
                   <Label text="Cost" GridPane.rowIndex="8" />
                   <Label text="End date (real)" GridPane.rowIndex="9" />
-                  <Label fx:id="textSelected" text="Selected project" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                  <Label fx:id="textSelected" text="" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                </children>
                <BorderPane.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -90,7 +90,7 @@
          <center>
             <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                <children>
-                  <TableView fx:id="projectsTable" prefHeight="420.0" prefWidth="200.0">
+                  <TableView fx:id="projectsTable" onMouseClicked="#onRowSelected" prefHeight="420.0" prefWidth="200.0">
                      <columns>
                         <TableColumn fx:id="idColumn" minWidth="-1.0" prefWidth="-1.0" text="Id" />
                         <TableColumn fx:id="nameColumn" minWidth="-1.0" prefWidth="-1.0" text="Name" />
