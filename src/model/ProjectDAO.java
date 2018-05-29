@@ -57,6 +57,14 @@ public class ProjectDAO {
         DBUtil.dbExecuteUpdate(query.toString());
     }
 
+    public static void deleteProject(int id) throws SQLException {
+        String query = new String("DELETE FROM " + PROJECTS_T +
+                                  " WHERE " + Project.ID + " = " + String.valueOf(id));
+        System.out.println(query);
+
+        DBUtil.dbExecuteUpdate(query);
+    }
+
     private static ObservableList<Project> getProjectsList(ResultSet set) throws SQLException {
         ObservableList<Project> list = FXCollections.observableArrayList();
 

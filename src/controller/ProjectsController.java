@@ -69,6 +69,8 @@ public class ProjectsController {
             System.out.println("showAllProjects ERROR: " + e.getSQLState());
             e.printStackTrace();
         }
+
+        clearSelected();
     }
 
     public void addProject(ActionEvent actionEvent) {
@@ -93,21 +95,29 @@ public class ProjectsController {
         }
 
         clearAddNewFields();
-        clearSelected();
     }
 
     public void updateSelectedProject(ActionEvent actionEvent) {
         try {
-            if (selectedId == NO_ID) throw new Exception("Please, select project for updating.");
+            if (selectedId == NO_ID) throw new Exception("Please, select project to update.");
 
             String cost = String.valueOf(Double.valueOf(fieldNewCost.getText()));
             String date = datePickerEndDateReal.getValue().format(formatter);
 
             ProjectDAO.updateProject(selectedId, cost, date);
             showAllProjects(null);
-            clearSelected();
         } catch (Exception e) {
             showAlert(Alert.AlertType.WARNING, "Warning", "Update failed", e.getMessage());
+        }
+    }
+
+    public void deleteSelectedProject(ActionEvent actionEvent) {
+        try {
+            if (selectedId == NO_ID) throw new Exception("Please, select project to delete.");
+            ProjectDAO.deleteProject(selectedId);
+            showAllProjects(null);
+        } catch (Exception e) {
+            showAlert(Alert.AlertType.WARNING, "Warning", "Delete failed", e.getMessage());
         }
     }
 
@@ -115,11 +125,22 @@ public class ProjectsController {
     private void initialize() {
         idColumn.setCellValueFactory(cellData -> cellData.getValue().idProperty().asObject());
         nameColumn.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
-        costColumn.setCellValueFactory(cellData -> cellData.getValue().costProperty().asObject());
         departmentColumn.setCellValueFactory(cellData -> cellData.getValue().departmentProperty());
         begDateColumn.setCellValueFactory(cellData -> cellData.getValue().date_begProperty());
         endDateColumn.setCellValueFactory(cellData -> cellData.getValue().date_endProperty());
         endDateRealColumn.setCellValueFactory(cellData -> cellData.getValue().date_end_realProperty());
+
+        costColumn.setCellValueFactory(cellData -> cellData.getValue().costProperty().asObject());
+        costColumn.setCellFactory(cellData -> new TableCell<Project, Double>() {
+            @Override
+            protected void updateItem(Double item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty)
+                    setText("");
+                else
+                    setText(String.format("%.2f", item.doubleValue()));
+            }
+        });
 
         idColumn.setVisible(false);
         showAllProjects(null);
@@ -149,7 +170,7 @@ public class ProjectsController {
 
         selectedId = selected.getId();
         textSelected.setText(selected.getName());
-        fieldNewCost.setText(String.valueOf(selected.getCost()));
+        fieldNewCost.setText(String.format("%.2f", selected.getCost()));
         datePickerEndDateReal.setValue(selected.getDate_end().toLocalDate());
     }
 
@@ -174,4 +195,5 @@ public class ProjectsController {
         alert.setContentText(content);
         alert.show();
     }
+
 }

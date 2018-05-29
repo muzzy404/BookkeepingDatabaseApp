@@ -26,6 +26,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
                   <RowConstraints minHeight="10.0" vgrow="ALWAYS" />
               </rowConstraints>
                <children>
@@ -68,12 +69,12 @@
                      </GridPane.margin>
                   </Button>
                   <Button mnemonicParsing="false" onAction="#updateSelectedProject" prefWidth="100.0" text="Update" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-                  <DatePicker prefWidth="200.0" fx:id="datePickerEndDateReal" promptText="real end date of project" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                  <DatePicker fx:id="datePickerEndDateReal" prefWidth="200.0" promptText="real end date of project" GridPane.columnIndex="1" GridPane.rowIndex="9">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" top="5.0" />
                      </GridPane.margin>
                   </DatePicker>
-                  <TextField promptText="new cost of project" fx:id="fieldNewCost" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                  <TextField fx:id="fieldNewCost" promptText="new cost of project" GridPane.columnIndex="1" GridPane.rowIndex="8">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" top="5.0" />
                      </GridPane.margin>
@@ -81,6 +82,7 @@
                   <Label text="Cost" GridPane.rowIndex="8" />
                   <Label text="End date (real)" GridPane.rowIndex="9" />
                   <Label fx:id="textSelected" text="" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                  <Button mnemonicParsing="false" onAction="#deleteSelectedProject" prefWidth="100.0" text="Delete" GridPane.columnIndex="1" GridPane.rowIndex="11" />
                </children>
                <BorderPane.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
