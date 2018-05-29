@@ -68,7 +68,6 @@ public class DBUtil {
         return cursor;
     }
 
-    // TODO: dbExecuteUpdate
     public static void dbExecuteUpdate(String query) throws SQLException {
         Statement statement = null;
 

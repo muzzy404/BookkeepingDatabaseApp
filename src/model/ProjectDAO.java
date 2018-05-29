@@ -47,6 +47,16 @@ public class ProjectDAO {
         DBUtil.dbExecuteUpdate(query.toString());
     }
 
+    public static void updateProject(int id, String cost, String endDateReal) throws SQLException {
+        StringBuilder query = new StringBuilder("UPDATE " + PROJECTS_T + " SET ")
+                .append(Project.COST + " = " + cost + ", ")
+                .append(Project.DATE_END_REAL + " = '" + endDateReal + "' ")
+                .append("WHERE " + Project.ID + " = " + id);
+        System.out.println(query.toString());
+
+        DBUtil.dbExecuteUpdate(query.toString());
+    }
+
     private static ObservableList<Project> getProjectsList(ResultSet set) throws SQLException {
         ObservableList<Project> list = FXCollections.observableArrayList();
 

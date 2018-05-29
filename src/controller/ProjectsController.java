@@ -97,12 +97,18 @@ public class ProjectsController {
     }
 
     public void updateSelectedProject(ActionEvent actionEvent) {
-        if (selectedId == NO_ID) {
-            showAlert(Alert.AlertType.WARNING, "Warning", "Update failed",
-                    "Please, select project for updating.");
+        try {
+            if (selectedId == NO_ID) throw new Exception("Please, select project for updating.");
+
+            String cost = String.valueOf(Double.valueOf(fieldNewCost.getText()));
+            String date = datePickerEndDateReal.getValue().format(formatter);
+
+            ProjectDAO.updateProject(selectedId, cost, date);
+            showAllProjects(null);
+            clearSelected();
+        } catch (Exception e) {
+            showAlert(Alert.AlertType.WARNING, "Warning", "Update failed", e.getMessage());
         }
-
-
     }
 
     @FXML
