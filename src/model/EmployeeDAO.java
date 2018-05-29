@@ -58,8 +58,17 @@ public class EmployeeDAO {
 
     public static void updateEmployee(int id,
                                       String lastName, String firstName, String patronymic,
-                                      String position, String salary) {
-        //TODO: update epm
+                                      String position, String salary) throws SQLException {
+        String query = new String("UPDATE " + EMPLOYEES_T + " SET " +
+                Employee.LAST_NAME  + " = '" + lastName   + "', " +
+                Employee.FIRST_NAME + " = '" + firstName  + "', " +
+                Employee.PATRONYMIC + " = '" + patronymic + "', " +
+                Employee.POSITION   + " = '" + position   + "', " +
+                Employee.SALARY     +  " = " + salary     +  " WHERE " +
+                Employee.ID + " = " + id);
+        System.out.println(query);
+
+        DBUtil.dbExecuteUpdate(query);
     }
 
     public static void deleteEmployee(int id) throws SQLException {

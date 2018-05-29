@@ -88,6 +88,14 @@ public class EmployeesController {
     }
 
     public void addNewEmployee(ActionEvent actionEvent) {
+        addEmployeeData(true);
+    }
+
+    public void updateEmployee(ActionEvent actionEvent) {
+        addEmployeeData(false);
+    }
+
+    private void addEmployeeData(boolean newRecord) {
         try {
             String lastName = fieldLastName.getText();
             String firstName = fieldFirstName.getText();
@@ -100,14 +108,13 @@ public class EmployeesController {
                 patronymic.length() == 0 ||
                 position.length()   == 0) throw new Exception("All fields must contain data.");
 
-            EmployeeDAO.insertEmployee(lastName, firstName, patronymic, position, salary);
+            if (newRecord)
+                EmployeeDAO.insertEmployee(lastName, firstName, patronymic, position, salary);
+            else
+                EmployeeDAO.updateEmployee(selectedEmpId, lastName, firstName, patronymic, position, salary);
         } catch (Exception e) {
-            AppUtil.showAlert(Alert.AlertType.WARNING, "Warning", "Insert failed", e.getMessage());
+            AppUtil.showAlert(Alert.AlertType.WARNING, "Warning", "Failed", e.getMessage());
         }
-        showAllEmployees();
-    }
-
-    public void updateEmployee(ActionEvent actionEvent) {
 
         showAllEmployees();
     }
