@@ -67,7 +67,7 @@
                         <Insets bottom="5.0" top="5.0" />
                      </GridPane.margin>
                   </Button>
-                  <Button mnemonicParsing="false" prefWidth="100.0" text="Update" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                  <Button mnemonicParsing="false" onAction="#updateSelectedProject" prefWidth="100.0" text="Update" GridPane.columnIndex="1" GridPane.rowIndex="10" />
                   <DatePicker prefWidth="200.0" fx:id="datePickerEndDateReal" promptText="real end date of project" GridPane.columnIndex="1" GridPane.rowIndex="9">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" top="5.0" />

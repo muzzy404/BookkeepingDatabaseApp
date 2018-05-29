@@ -71,7 +71,6 @@ public class ProjectsController {
         }
     }
 
-    @FXML
     public void addProject(ActionEvent actionEvent) {
         try {
             String name = fieldName.getText();
@@ -85,16 +84,11 @@ public class ProjectsController {
             ProjectDAO.insertProject(name, cost, department, dateBegin, dateEnd);
             showAllProjects(null);
         } catch (SQLException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Insert Error");
-            alert.setContentText(e.getSQLState());
+            showAlert(Alert.AlertType.ERROR, "Error", "Insert Error", e.getSQLState());
         } catch (Exception e) {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Warning");
-            alert.setHeaderText("All fields must be correctly filled and contain data");
-            alert.setContentText("Please, fill all data fields correctly to add a new project to Projects table.");
-            alert.show();
+            showAlert(Alert.AlertType.WARNING, "Warning",
+                    "All fields must be correctly filled and contain data",
+                    "Please, fill all data fields correctly to add a new project to Projects table.");
             return;
         }
 
@@ -102,8 +96,17 @@ public class ProjectsController {
         clearSelected();
     }
 
+    public void updateSelectedProject(ActionEvent actionEvent) {
+        if (selectedId == NO_ID) {
+            showAlert(Alert.AlertType.WARNING, "Warning", "Update failed",
+                    "Please, select project for updating.");
+        }
+
+
+    }
+
     @FXML
-    public void initialize() {
+    private void initialize() {
         idColumn.setCellValueFactory(cellData -> cellData.getValue().idProperty().asObject());
         nameColumn.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
         costColumn.setCellValueFactory(cellData -> cellData.getValue().costProperty().asObject());
@@ -153,5 +156,16 @@ public class ProjectsController {
         fieldNewCost.setText("");
         textSelected.setText("");
         selectedId = NO_ID;
+    }
+
+    private void showAlert(Alert.AlertType type,
+                           String title,
+                           String header,
+                           String content) {
+        Alert alert = new Alert(type);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        alert.show();
     }
 }
