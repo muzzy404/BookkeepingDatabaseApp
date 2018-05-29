@@ -9,6 +9,7 @@ import model.Department;
 import model.DepartmentDAO;
 import model.Project;
 import model.ProjectDAO;
+import util.AppUtil;
 
 import java.sql.Date;
 import java.sql.SQLException;
@@ -86,9 +87,9 @@ public class ProjectsController {
             ProjectDAO.insertProject(name, cost, department, dateBegin, dateEnd);
             showAllProjects(null);
         } catch (SQLException e) {
-            showAlert(Alert.AlertType.ERROR, "Error", "Insert Error", e.getSQLState());
+            AppUtil.showAlert(Alert.AlertType.ERROR, "Error", "Insert Error", e.getSQLState());
         } catch (Exception e) {
-            showAlert(Alert.AlertType.WARNING, "Warning",
+            AppUtil.showAlert(Alert.AlertType.WARNING, "Warning",
                     "All fields must be correctly filled and contain data",
                     "Please, fill all data fields correctly to add a new project to Projects table.");
             return;
@@ -107,7 +108,7 @@ public class ProjectsController {
             ProjectDAO.updateProject(selectedId, cost, date);
             showAllProjects(null);
         } catch (Exception e) {
-            showAlert(Alert.AlertType.WARNING, "Warning", "Update failed", e.getMessage());
+            AppUtil.showAlert(Alert.AlertType.WARNING, "Warning", "Update failed", e.getMessage());
         }
     }
 
@@ -117,7 +118,7 @@ public class ProjectsController {
             ProjectDAO.deleteProject(selectedId);
             showAllProjects(null);
         } catch (Exception e) {
-            showAlert(Alert.AlertType.WARNING, "Warning", "Delete failed", e.getMessage());
+            AppUtil.showAlert(Alert.AlertType.WARNING, "Warning", "Delete failed", e.getMessage());
         }
     }
 
@@ -185,16 +186,4 @@ public class ProjectsController {
         textSelected.setText("");
         selectedId = NO_ID;
     }
-
-    private void showAlert(Alert.AlertType type,
-                           String title,
-                           String header,
-                           String content) {
-        Alert alert = new Alert(type);
-        alert.setTitle(title);
-        alert.setHeaderText(header);
-        alert.setContentText(content);
-        alert.show();
-    }
-
 }

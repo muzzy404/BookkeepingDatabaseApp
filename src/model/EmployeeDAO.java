@@ -37,6 +37,24 @@ public class EmployeeDAO {
         return getEmployeeDepartmentsList(DBUtil.dbExecuteSelect(query.toString()));
     }
 
+    public static void insertEmployee(String lastName, String firstName, String patronymic,
+                                     String position, String salary) {
+        //TODO: insert new epm
+    }
+
+    public static void updateEmployee(String lastName, String firstName, String patronymic,
+                              String position, String salary) {
+        //TODO: update epm
+    }
+
+    public static void deleteEmployee(int id) throws SQLException {
+        String query = new String("DELETE FROM " + EMPLOYEES_T +
+                                  " WHERE " + Employee.ID + " = " + String.valueOf(id));
+        System.out.println(query);
+
+        DBUtil.dbExecuteUpdate(query);
+    }
+
     private static ObservableList<Employee> getEmployeesList(ResultSet set) throws SQLException {
         ObservableList<Employee> list = FXCollections.observableArrayList();
 

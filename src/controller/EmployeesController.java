@@ -1,13 +1,13 @@
 package controller;
 
-import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
-import model.Department;
 import model.Employee;
 import model.EmployeeDAO;
 import model.EmployeeDepartment;
+import util.AppUtil;
 
 import java.sql.SQLException;
 
@@ -72,7 +72,9 @@ public class EmployeesController {
         }
 
         showAllEmployeesWithDepartments();
-        // TODO: clear selected! and update second table
+
+        clearSelectedEmployee();
+        clearSelectedEmpDep();
     }
 
     private void showAllEmployeesWithDepartments() {
@@ -81,6 +83,26 @@ public class EmployeesController {
         } catch (SQLException e) {
             System.out.println("showAllEmployeesWithDepartments ERROR: " + e.getSQLState());
             e.printStackTrace();
+        }
+    }
+
+    public void addNewEmployee(ActionEvent actionEvent) {
+
+        showAllEmployees();
+    }
+
+    public void updateEmployee(ActionEvent actionEvent) {
+
+        showAllEmployees();
+    }
+
+    public void deleteEmployee(ActionEvent actionEvent) {
+        try {
+            if (selectedEmpId == NO_ID) throw new Exception("Please, select employee to delete.");
+            EmployeeDAO.deleteEmployee(selectedEmpId);
+            showAllEmployees();
+        } catch (Exception e) {
+            AppUtil.showAlert(Alert.AlertType.WARNING, "Warning", "Delete failed", e.getMessage());
         }
     }
 
@@ -147,6 +169,7 @@ public class EmployeesController {
                                     selected.getPatronymic());
     }
 
+    @FXML
     private void clearSelectedEmployee() {
         selectedEmpId = NO_ID;
 

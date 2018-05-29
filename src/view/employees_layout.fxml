@@ -95,21 +95,22 @@
                         <Insets left="5.0" right="5.0" />
                      </GridPane.margin>
                   </TextField>
-                  <Button fx:id="btnDeleteEmp" minWidth="100.0" mnemonicParsing="false" text="Delete" GridPane.rowIndex="6">
+                  <Button fx:id="btnDeleteEmp" minWidth="100.0" mnemonicParsing="false" onAction="#deleteEmployee" text="Delete" GridPane.rowIndex="6">
                      <GridPane.margin>
                         <Insets />
                      </GridPane.margin>
                   </Button>
-                  <Button fx:id="btnAddEmp" minWidth="100.0" mnemonicParsing="false" text="Add" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                  <Button fx:id="btnAddEmp" minWidth="100.0" mnemonicParsing="false" onAction="#addNewEmployee" text="Add" GridPane.columnIndex="1" GridPane.rowIndex="5">
                      <GridPane.margin>
                         <Insets right="5.0" />
                      </GridPane.margin>
                   </Button>
-                  <Button fx:id="btnUpdateEmp" minWidth="100.0" mnemonicParsing="false" text="Update" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                  <Button fx:id="btnUpdateEmp" minWidth="100.0" mnemonicParsing="false" onAction="#updateEmployee" text="Update" GridPane.columnIndex="1" GridPane.rowIndex="6">
                      <GridPane.margin>
                         <Insets right="5.0" />
                      </GridPane.margin>
                   </Button>
+                  <Button fx:id="btnClearFields" minWidth="100.0" mnemonicParsing="false" onAction="#clearSelectedEmployee" text="Clear" GridPane.rowIndex="5" />
                </children>
             </GridPane>
             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -119,7 +120,7 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Label fx:id="selectedFromEmployees" text="Selected person" />
+                  <Label fx:id="selectedFromEmployees" text="not selected" />
                   <ComboBox fx:id="comboBoxDepartments" prefWidth="400.0">
                      <VBox.margin>
                         <Insets bottom="5.0" top="5.0" />
@@ -133,7 +134,7 @@
                         <Insets top="20.0" />
                      </padding>
                   </Label>
-                  <Label fx:id="selectedFromDepsEmp" text="Selected person">
+                  <Label fx:id="selectedFromDepsEmp" text="not selected">
                      <VBox.margin>
                         <Insets bottom="5.0" />
                      </VBox.margin>

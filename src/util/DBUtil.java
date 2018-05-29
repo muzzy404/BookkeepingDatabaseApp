@@ -76,7 +76,10 @@ public class DBUtil {
 
             statement = connection.createStatement();
             statement.executeUpdate(query);
-        } catch(Exception e) {
+        } catch(SQLException e) {
+            //e.printStackTrace();
+            throw e;
+        } catch (Exception e) {
             System.out.println("Problem occurred at execute UPDATE operation.");
             e.printStackTrace();
         } finally {
