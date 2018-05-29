@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ProjectDAO {
-    protected static final  String PROJECTS_T = "BOOKKEEPING.PROJECTS";
+    protected static final String PROJECTS_T  = "BOOKKEEPING.PROJECTS";
     private static final String DEPARTMENTS_T = DepartmentDAO.DEPARTMENTS_T;
 
     public static ObservableList<Project> selectAll() throws SQLException {

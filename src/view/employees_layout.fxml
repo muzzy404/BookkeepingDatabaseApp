@@ -20,9 +20,10 @@
          <children>
             <TableView fx:id="employeesTable" prefHeight="200.0" prefWidth="200.0">
               <columns>
+                  <TableColumn fx:id="columnIdEmp" prefWidth="75.0" text="Id" />
                 <TableColumn fx:id="columnLastNameEmp" prefWidth="75.0" text="Last name" />
                 <TableColumn fx:id="columnFirstNameEmp" prefWidth="75.0" text="First name" />
-                  <TableColumn fx:id="columnPatherNameEmp" prefWidth="75.0" text="Pather name" />
+                  <TableColumn fx:id="columnPatronymicEmp" prefWidth="75.0" text="Patronymic" />
                   <TableColumn fx:id="columnPosition" prefWidth="75.0" text="Position" />
                   <TableColumn fx:id="columnSalary" prefWidth="75.0" text="Salary" />
               </columns>
@@ -32,15 +33,13 @@
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
-               <padding>
-                  <Insets bottom="5.0" />
-               </padding>
             </TableView>
-            <TableView fx:id="EmployeesInDepsTable" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+            <TableView fx:id="employeesInDepsTable" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
               <columns>
+                  <TableColumn fx:id="columnIdEmpDep" prefWidth="75.0" text="Id" />
                   <TableColumn fx:id="columnLastNameEmpDep" prefWidth="75.0" text="Last name" />
                   <TableColumn fx:id="columnFirstNameEmpDep" prefWidth="75.0" text="First name" />
-                  <TableColumn fx:id="columnPatherNameEmpDep" prefWidth="75.0" text="Pather name" />
+                  <TableColumn fx:id="columnPatronymicEmpDep" prefWidth="75.0" text="Patronymic" />
                   <TableColumn fx:id="columnDepartment" prefWidth="75.0" text="Department" />
               </columns>
                <GridPane.margin>
@@ -68,7 +67,7 @@
                <children>
                   <Label text="First name" />
                   <Label text="Last name" GridPane.rowIndex="1" />
-                  <Label text="Pather name" GridPane.rowIndex="2" />
+                  <Label text="Patronymic" GridPane.rowIndex="2" />
                   <Label text="Position" GridPane.rowIndex="3" />
                   <Label text="Salary" GridPane.rowIndex="4" />
                   <TextField fx:id="fieldFirstName" GridPane.columnIndex="1">
@@ -81,7 +80,7 @@
                         <Insets left="5.0" right="5.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="fieldPatherName" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <TextField fx:id="fieldPatronymic" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <GridPane.margin>
                         <Insets left="5.0" right="5.0" />
                      </GridPane.margin>
