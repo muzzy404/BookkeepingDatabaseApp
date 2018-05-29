@@ -167,6 +167,7 @@ public class ProjectsController {
 
     public void onRowSelected(MouseEvent mouseEvent) {
         Project selected = (Project) projectsTable.getSelectionModel().getSelectedItem();
+        if (selected == null) return;
 
         selectedId = selected.getId();
         textSelected.setText(selected.getName());

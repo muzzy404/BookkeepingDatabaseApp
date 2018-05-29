@@ -25,7 +25,7 @@ public class MainController extends Application {
 
         try {
             initRootLayout();
-            showProjectsLayout();
+            openProjectsWindow(null);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -36,10 +36,6 @@ public class MainController extends Application {
         root = FXMLLoader.load(getClass().getResource("/view/root_layout.fxml"));
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
-    }
-
-    private void showProjectsLayout() throws IOException {
-        root.setCenter(FXMLLoader.load(getClass().getResource("/view/projects_layout.fxml")));
     }
 
     public void handleClose(ActionEvent actionEvent) {
@@ -57,5 +53,15 @@ public class MainController extends Application {
     public static void main(String[] args) {
         Locale.setDefault(Locale.ENGLISH); // important!!!
         launch(args);
+    }
+
+    public void openProjectsWindow(ActionEvent actionEvent) throws IOException {
+        root.getChildren().remove(root.getCenter());
+        root.setCenter(FXMLLoader.load(getClass().getResource("/view/projects_layout.fxml")));
+    }
+
+    public void openEmployeesWindow(ActionEvent actionEvent) throws IOException {
+        root.getChildren().remove(root.getCenter());
+        root.setCenter(FXMLLoader.load(getClass().getResource("/view/employees_layout.fxml")));
     }
 }
