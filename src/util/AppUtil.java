@@ -21,19 +21,25 @@ public class AppUtil {
         alert.show();
     }
 
-    public static void updateDepartmentsComboBox(ArrayList<Integer> departmentsIds, ComboBox comboBoxDepartments) {
+    public static ArrayList<Integer> updateDepartmentsComboBox(ComboBox comboBoxDepartments) {
+        System.out.println("UPDATE!!!");
+        ArrayList<Integer> departmentsIds = new ArrayList<>();
+
         try {
             ObservableList<Department> departments = DepartmentDAO.selectAll();
-            departmentsIds = new ArrayList<>();
 
             for(Department department : departments) {
                 comboBoxDepartments.getItems().add(department.getName());
                 departmentsIds.add(department.getId());
+
+                System.out.println(departmentsIds.size());
             }
             if (departments.size() > 0) comboBoxDepartments.getSelectionModel().select(0);
         } catch (SQLException e) {
             System.out.println("Departments update ERROR " + e.getSQLState());
             e.printStackTrace();
         }
+
+        return departmentsIds;
     }
 }

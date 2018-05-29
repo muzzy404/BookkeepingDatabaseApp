@@ -167,7 +167,9 @@ public class EmployeesController {
 
         showAllEmployees();
 
-        updateDepartmentsComboBox();
+        departmentsIds = new ArrayList<>();
+        departmentsIds = AppUtil.updateDepartmentsComboBox(comboBoxDepartments);
+        System.out.println(departmentsIds.size());
     }
 
     public void employeeSelected(MouseEvent mouseEvent) {
@@ -197,6 +199,33 @@ public class EmployeesController {
         System.out.println(selectedRecordEmpDep);
     }
 
+    public void addEmployeeToDepartment(ActionEvent actionEvent) {
+        try {
+            if (selectedEmpId == NO_ID) throw new Exception("Select employee to add him in department.");
+            int departmentId = departmentsIds.get(comboBoxDepartments.getSelectionModel().getSelectedIndex());
+
+            EmployeeDAO.addEmployeeToDepartment(selectedEmpId, departmentId);
+            showAllEmployeesWithDepartments();
+        } catch (Exception e) {
+            AppUtil.showAlert(Alert.AlertType.WARNING,
+                    "Waning", "Cannot add an employee to department", e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteEmployeeFromDepartment(ActionEvent actionEvent) {
+        try {
+            if (selectedRecordEmpDep == NO_ID) throw new Exception("Select employee to remove him from department.");
+
+            EmployeeDAO.deleteEmployeeFromDepartment(selectedRecordEmpDep);
+            showAllEmployeesWithDepartments();
+        } catch (Exception e) {
+            AppUtil.showAlert(Alert.AlertType.WARNING,
+                    "Waning", "Cannot remove an employee from department", e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
     @FXML
     private void clearSelectedEmployee() {
         selectedEmpId = NO_ID;
@@ -216,7 +245,4 @@ public class EmployeesController {
         selectedRecordDepsEmp.setText(NOT_SELECTED);
     }
 
-    private void updateDepartmentsComboBox() {
-        AppUtil.updateDepartmentsComboBox(departmentsIds, comboBoxDepartments);
-    }
 }

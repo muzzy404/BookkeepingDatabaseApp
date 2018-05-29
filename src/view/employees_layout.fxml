@@ -125,7 +125,7 @@
                      <VBox.margin>
                         <Insets bottom="5.0" top="5.0" />
                      </VBox.margin></ComboBox>
-                  <Button fx:id="btnAddToDep" mnemonicParsing="false" prefWidth="150.0" text="Add to department" />
+                  <Button fx:id="btnAddToDep" mnemonicParsing="false" onAction="#addEmployeeToDepartment" prefWidth="150.0" text="Add to department" />
                   <Label text="Departments managment table selected:">
                      <font>
                         <Font name="System Bold" size="12.0" />
@@ -139,7 +139,7 @@
                         <Insets bottom="5.0" />
                      </VBox.margin>
                   </Label>
-                  <Button fx:id="btnDeleteFromDep" mnemonicParsing="false" prefWidth="150.0" text="Delete from department">
+                  <Button fx:id="btnDeleteFromDep" mnemonicParsing="false" onAction="#deleteEmployeeFromDepartment" prefWidth="150.0" text="Delete from department">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>

@@ -146,13 +146,9 @@ public class ProjectsController {
         idColumn.setVisible(false);
         showAllProjects(null);
 
-        updateDepartmentsComboBox();
+        departmentsIds = AppUtil.updateDepartmentsComboBox(comboBoxDepartments);
 
         formatter = DateTimeFormatter.ofPattern(DATE_FORMAT);
-    }
-
-    private void updateDepartmentsComboBox() {
-        AppUtil.updateDepartmentsComboBox(departmentsIds, comboBoxDepartments);
     }
 
     public void onRowSelected(MouseEvent mouseEvent) {
