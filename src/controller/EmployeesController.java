@@ -1,22 +1,27 @@
 package controller;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
-import model.Employee;
-import model.EmployeeDAO;
-import model.EmployeeDepartment;
+import model.*;
 import util.AppUtil;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class EmployeesController {
+    private ArrayList<Integer> departmentsIds;
+
     static private final int NO_ID = -1;
     static private final String NOT_SELECTED = "not selected";
 
     private int selectedEmpId        = NO_ID;
     private int selectedRecordEmpDep = NO_ID;
+
+    @FXML
+    private ComboBox comboBoxDepartments;
 
     @FXML
     private TableView employeesTable;
@@ -162,7 +167,7 @@ public class EmployeesController {
 
         showAllEmployees();
 
-        // TODO: deps combo box
+        updateDepartmentsComboBox();
     }
 
     public void employeeSelected(MouseEvent mouseEvent) {
@@ -209,5 +214,9 @@ public class EmployeesController {
     private void clearSelectedEmpDep() {
         selectedRecordEmpDep = NO_ID;
         selectedRecordDepsEmp.setText(NOT_SELECTED);
+    }
+
+    private void updateDepartmentsComboBox() {
+        AppUtil.updateDepartmentsComboBox(departmentsIds, comboBoxDepartments);
     }
 }

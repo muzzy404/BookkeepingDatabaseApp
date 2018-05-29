@@ -152,18 +152,7 @@ public class ProjectsController {
     }
 
     private void updateDepartmentsComboBox() {
-        try {
-            ObservableList<Department> departments = DepartmentDAO.selectAll();
-            departmentsIds = new ArrayList<>();
-
-            for(Department department : departments) {
-                comboBoxDepartments.getItems().add(department.getName());
-                departmentsIds.add(department.getId());
-            }
-        } catch (SQLException e) {
-            System.out.println("Departments update ERROR " + e.getSQLState());
-            e.printStackTrace();
-        }
+        AppUtil.updateDepartmentsComboBox(departmentsIds, comboBoxDepartments);
     }
 
     public void onRowSelected(MouseEvent mouseEvent) {
