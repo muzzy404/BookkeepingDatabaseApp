@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 
 <BorderPane
-        fx:controller="controller.RootController"
+        fx:controller="controller.MainController"
         maxHeight="-Infinity"
         maxWidth="-Infinity"
         minHeight="-Infinity"

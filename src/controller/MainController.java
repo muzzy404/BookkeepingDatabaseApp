@@ -1,18 +1,21 @@
+package controller;
+
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import util.DBUtil;
 
 import java.io.IOException;
 import java.util.Locale;
 
-public class Main extends Application {
+public class MainController extends Application {
 
     private static final String TITLE = "Bookkeeping application";
 
-    private BorderPane root;
+    private static BorderPane root;
     private Stage primaryStage;
 
     @Override
@@ -26,15 +29,6 @@ public class Main extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        //DBUtil.dbConnect();
-    }
-
-    @Override
-    public void stop() throws Exception {
-        super.stop();
-
-        DBUtil.dbDisconnect();
     }
 
     private void initRootLayout() throws IOException {
@@ -48,6 +42,17 @@ public class Main extends Application {
         root.setCenter(FXMLLoader.load(getClass().getResource("/view/projects_layout.fxml")));
     }
 
+    public void handleClose(ActionEvent actionEvent) {
+        System.exit(0);
+    }
+
+    public void handleHelp(ActionEvent actionEvent) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("About");
+        alert.setHeaderText("Bookkeeping data base client application");
+        alert.setContentText("This is a JavaFX client application for Bookkeeping Oracle data base. Author Daria Zelenova.");
+        alert.show();
+    }
 
     public static void main(String[] args) {
         Locale.setDefault(Locale.ENGLISH); // important!!!
