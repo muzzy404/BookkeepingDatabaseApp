@@ -5,8 +5,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
-import model.Department;
-import model.DepartmentDAO;
 import model.Project;
 import model.ProjectDAO;
 import util.AppUtil;
