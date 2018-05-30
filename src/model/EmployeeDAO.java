@@ -123,7 +123,7 @@ public class EmployeeDAO {
                     set.getInt(EmployeeDepartment.ID),
                     set.getString(Employee.LAST_NAME),
                     set.getString(Employee.FIRST_NAME),
-                    set.getString(Employee.LAST_NAME),
+                    set.getString(Employee.PATRONYMIC),
                     set.getString(Department.NAME));
             list.add(employeeDepartment);
         }

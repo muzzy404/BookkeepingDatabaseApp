@@ -45,19 +45,19 @@ public class ProjectsController {
     private TableView projectsTable;
 
     @FXML
-    private TableColumn<Project, Integer> idColumn;
+    private TableColumn<Project, Integer> columnId;
     @FXML
-    private TableColumn<Project, String> nameColumn;
+    private TableColumn<Project, String> columnName;
     @FXML
-    private TableColumn<Project, Double> costColumn;
+    private TableColumn<Project, Double> columnCost;
     @FXML
-    private TableColumn<Project, String> departmentColumn;
+    private TableColumn<Project, String> columnDepartment;
     @FXML
-    private TableColumn<Project, Date> begDateColumn;
+    private TableColumn<Project, Date> columnBegDate;
     @FXML
-    private TableColumn<Project, Date> endDateColumn;
+    private TableColumn<Project, Date> columnEndDate;
     @FXML
-    private TableColumn<Project, Date> endDateRealColumn;
+    private TableColumn<Project, Date> columnEndDateReal;
 
     @FXML
     private void showAllProjects(ActionEvent actionEvent) {
@@ -122,15 +122,15 @@ public class ProjectsController {
 
     @FXML
     private void initialize() {
-        idColumn.setCellValueFactory(cellData -> cellData.getValue().idProperty().asObject());
-        nameColumn.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
-        departmentColumn.setCellValueFactory(cellData -> cellData.getValue().departmentProperty());
-        begDateColumn.setCellValueFactory(cellData -> cellData.getValue().date_begProperty());
-        endDateColumn.setCellValueFactory(cellData -> cellData.getValue().date_endProperty());
-        endDateRealColumn.setCellValueFactory(cellData -> cellData.getValue().date_end_realProperty());
+        columnId.setCellValueFactory(cellData -> cellData.getValue().idProperty().asObject());
+        columnName.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
+        columnDepartment.setCellValueFactory(cellData -> cellData.getValue().departmentProperty());
+        columnBegDate.setCellValueFactory(cellData -> cellData.getValue().date_begProperty());
+        columnEndDate.setCellValueFactory(cellData -> cellData.getValue().date_endProperty());
+        columnEndDateReal.setCellValueFactory(cellData -> cellData.getValue().date_end_realProperty());
 
-        costColumn.setCellValueFactory(cellData -> cellData.getValue().costProperty().asObject());
-        costColumn.setCellFactory(cellData -> new TableCell<Project, Double>() {
+        columnCost.setCellValueFactory(cellData -> cellData.getValue().costProperty().asObject());
+        columnCost.setCellFactory(cellData -> new TableCell<Project, Double>() {
             @Override
             protected void updateItem(Double item, boolean empty) {
                 super.updateItem(item, empty);
@@ -141,7 +141,7 @@ public class ProjectsController {
             }
         });
 
-        idColumn.setVisible(false);
+        columnId.setVisible(false);
         showAllProjects(null);
 
         departmentsIds = AppUtil.updateDepartmentsComboBox(comboBoxDepartments);
