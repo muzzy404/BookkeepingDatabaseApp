@@ -34,6 +34,14 @@ public class DepartmentDAO {
         DBUtil.dbExecuteUpdate(query);
     }
 
+    public static void deleteDepartment(int id) throws SQLException {
+        String query = new String("DELETE FROM " + DEPARTMENTS_T +
+                " WHERE " + Department.ID + " = " + String.valueOf(id));
+        System.out.println(query);
+
+        DBUtil.dbExecuteUpdate(query);
+    }
+
     private static ObservableList<Department> getDepartmentsList(ResultSet set) throws SQLException {
         ObservableList<Department> list = FXCollections.observableArrayList();
 

@@ -65,6 +65,15 @@ public class DepartmentsController {
     }
 
     public void deleteDepartment(ActionEvent actionEvent) {
+        try {
+            if (selectedDepartmentId == NO_ID) throw new Exception("Please, select department to delete.");
+            DepartmentDAO.deleteDepartment(selectedDepartmentId);
+
+            showAllDepartments();
+        } catch (Exception e) {
+            AppUtil.showAlert(Alert.AlertType.WARNING,
+                    "Warning", "Delete failed", e.getMessage());
+        }
     }
 
     @FXML
