@@ -1,13 +1,12 @@
 package controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import model.Department;
 import model.DepartmentDAO;
+import util.AppUtil;
 
 import java.sql.SQLException;
 
@@ -37,6 +36,35 @@ public class DepartmentsController {
             e.printStackTrace();
         }
         clearAllSelected();
+    }
+
+    public void addDepartmentData(boolean newRecord) {
+        try {
+            String name = fieldDepartmentName.getText();
+            if (name.length() == 0) throw new Exception("Please, enter name for a project.");
+
+            if (newRecord)
+                DepartmentDAO.addNewDepartment(name);
+            else {
+                if (selectedDepartmentId == NO_ID) throw new Exception("Please, select department to update.");
+                DepartmentDAO.updateDepartment(selectedDepartmentId, name);
+            }
+            showAllDepartments();
+        } catch (Exception e) {
+            AppUtil.showAlert(Alert.AlertType.WARNING,
+                    "Warning", "Failed", e.getMessage());
+        }
+    }
+
+    public void addDepartment(ActionEvent actionEvent) {
+        addDepartmentData(true);
+    }
+
+    public void updateDepartment(ActionEvent actionEvent) {
+        addDepartmentData(false);
+    }
+
+    public void deleteDepartment(ActionEvent actionEvent) {
     }
 
     @FXML

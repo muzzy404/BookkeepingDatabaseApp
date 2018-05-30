@@ -1,6 +1,5 @@
 package controller;
 
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -113,9 +112,11 @@ public class EmployeesController {
                 position.length()   == 0) throw new Exception("All fields must contain data.");
 
             if (newRecord)
-                EmployeeDAO.insertEmployee(lastName, firstName, patronymic, position, salary);
-            else
+                EmployeeDAO.addEmployee(lastName, firstName, patronymic, position, salary);
+            else {
+                if (selectedEmpId == NO_ID) throw new Exception("Please, select employee to update.");
                 EmployeeDAO.updateEmployee(selectedEmpId, lastName, firstName, patronymic, position, salary);
+            }
         } catch (Exception e) {
             AppUtil.showAlert(Alert.AlertType.WARNING, "Warning", "Failed", e.getMessage());
         }

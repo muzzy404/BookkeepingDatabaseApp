@@ -37,8 +37,8 @@ public class EmployeeDAO {
         return getEmployeeDepartmentsList(DBUtil.dbExecuteSelect(query.toString()));
     }
 
-    public static void insertEmployee(String lastName, String firstName, String patronymic,
-                                      String position, String salary) throws SQLException {
+    public static void addEmployee(String lastName, String firstName, String patronymic,
+                                   String position, String salary) throws SQLException {
         String query = new String("INSERT INTO " + EMPLOYEES_T + " (" +
                 Employee.LAST_NAME  + ", "     +
                 Employee.FIRST_NAME + ", "     +
@@ -65,7 +65,7 @@ public class EmployeeDAO {
                 Employee.PATRONYMIC + " = '" + patronymic + "', " +
                 Employee.POSITION   + " = '" + position   + "', " +
                 Employee.SALARY     +  " = " + salary     +  " WHERE " +
-                Employee.ID + " = " + id);
+                Employee.ID + " = " + String.valueOf(id));
         System.out.println(query);
 
         DBUtil.dbExecuteUpdate(query);

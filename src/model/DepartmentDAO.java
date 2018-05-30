@@ -17,6 +17,23 @@ public class DepartmentDAO {
         return getDepartmentsList(resultSet);
     }
 
+    public static void addNewDepartment(String name) throws SQLException {
+        String query = new String("INSERT INTO " + DEPARTMENTS_T + " (" +
+                Department.NAME + ") VALUES (" + "'" + name + "')");
+        System.out.println(query);
+
+        DBUtil.dbExecuteUpdate(query);
+    }
+
+    public static void updateDepartment(int id, String newName) throws SQLException {
+        String query = new String("UPDATE " + DEPARTMENTS_T + " SET " +
+                Department.NAME + " = '" + newName + "' WHERE " +
+                Department.ID + " = " + String.valueOf(id));
+        System.out.println(query);
+
+        DBUtil.dbExecuteUpdate(query);
+    }
+
     private static ObservableList<Department> getDepartmentsList(ResultSet set) throws SQLException {
         ObservableList<Department> list = FXCollections.observableArrayList();
 
