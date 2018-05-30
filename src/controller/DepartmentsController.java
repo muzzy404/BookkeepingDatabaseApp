@@ -32,7 +32,7 @@ public class DepartmentsController {
         try {
             departmentTable.setItems(DepartmentDAO.selectAll());
         } catch (SQLException e) {
-            System.out.println("showAllDepartments ERROR: " + e.getSQLState());
+            System.err.println("showAllDepartments ERROR: " + e.getSQLState());
             e.printStackTrace();
         }
         clearAllSelected();

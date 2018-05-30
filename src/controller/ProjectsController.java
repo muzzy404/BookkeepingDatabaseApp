@@ -65,7 +65,7 @@ public class ProjectsController {
             ObservableList<Project> projectsList = ProjectDAO.selectAll();
             projectsTable.setItems(projectsList);
         } catch (SQLException e) {
-            System.out.println("showAllProjects ERROR: " + e.getSQLState());
+            System.err.println("showAllProjects ERROR: " + e.getSQLState());
             e.printStackTrace();
         }
 

@@ -32,7 +32,7 @@ public class EmployeeDAO {
                         EmployeeDepartment.DEPARTMENT_ID + " = " + depField + Department.ID + "\n")
                 .append("JOIN " + EMPLOYEES_T + " ON " +
                         EmployeeDepartment.EMPLOYEE_ID + " = " + empField + Employee.ID);
-        System.out.println(query.toString());
+        //System.out.println(query.toString());
 
         return getEmployeeDepartmentsList(DBUtil.dbExecuteSelect(query.toString()));
     }
@@ -51,7 +51,7 @@ public class EmployeeDAO {
                 "'" + patronymic + "', " +
                 "'" + position   + "', " +
                 salary + ")");
-        System.out.println(query);
+        //System.out.println(query);
 
         DBUtil.dbExecuteUpdate(query);
     }
@@ -66,7 +66,7 @@ public class EmployeeDAO {
                 Employee.POSITION   + " = '" + position   + "', " +
                 Employee.SALARY     +  " = " + salary     +  " WHERE " +
                 Employee.ID + " = " + String.valueOf(id));
-        System.out.println(query);
+        //System.out.println(query);
 
         DBUtil.dbExecuteUpdate(query);
     }
@@ -74,7 +74,7 @@ public class EmployeeDAO {
     public static void deleteEmployee(int id) throws SQLException {
         String query = new String("DELETE FROM " + EMPLOYEES_T +
                                   " WHERE " + Employee.ID + " = " + String.valueOf(id));
-        System.out.println(query);
+        //System.out.println(query);
 
         DBUtil.dbExecuteUpdate(query);
     }
@@ -86,7 +86,7 @@ public class EmployeeDAO {
                 // values
                 String.valueOf(departmentId) + ", " +
                 String .valueOf(employeeId)  + ")");
-        System.out.println(query);
+        //System.out.println(query);
 
         DBUtil.dbExecuteUpdate(query);
     }
@@ -94,7 +94,7 @@ public class EmployeeDAO {
     public static void deleteEmployeeFromDepartment(int recordId) throws SQLException {
         String query = new String("DELETE FROM " + DEPARTMENTS_EMPLOYEES_T +
                                   " WHERE " + EmployeeDepartment.ID + " = " + String.valueOf(recordId));
-        System.out.println(query);
+        //System.out.println(query);
 
         DBUtil.dbExecuteUpdate(query);
     }

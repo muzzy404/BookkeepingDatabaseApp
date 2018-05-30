@@ -42,7 +42,7 @@ public class ProjectDAO {
                 .append(String.valueOf(dep) + ", ")
                 .append("'" + beginDate + "', ")
                 .append("'" + endDate + "')");
-        System.out.println(query.toString());
+        //System.out.println(query.toString());
 
         DBUtil.dbExecuteUpdate(query.toString());
     }
@@ -52,7 +52,7 @@ public class ProjectDAO {
                 .append(Project.COST + " = " + cost + ", ")
                 .append(Project.DATE_END_REAL + " = '" + endDateReal + "' ")
                 .append("WHERE " + Project.ID + " = " + id);
-        System.out.println(query.toString());
+        //System.out.println(query.toString());
 
         DBUtil.dbExecuteUpdate(query.toString());
     }
@@ -60,7 +60,7 @@ public class ProjectDAO {
     public static void deleteProject(int id) throws SQLException {
         String query = new String("DELETE FROM " + PROJECTS_T +
                                   " WHERE " + Project.ID + " = " + String.valueOf(id));
-        System.out.println(query);
+        //System.out.println(query);
 
         DBUtil.dbExecuteUpdate(query);
     }

@@ -71,7 +71,7 @@ public class EmployeesController {
         try {
             employeesTable.setItems(EmployeeDAO.selectAll());
         } catch (SQLException e) {
-            System.out.println("showAllEmployees ERROR: " + e.getSQLState());
+            System.err.println("showAllEmployees ERROR: " + e.getSQLState());
             e.printStackTrace();
         }
 
@@ -85,7 +85,7 @@ public class EmployeesController {
         try {
             employeesInDepsTable.setItems(EmployeeDAO.selectAllWithDepartments());
         } catch (SQLException e) {
-            System.out.println("showAllEmployeesWithDepartments ERROR: " + e.getSQLState());
+            System.err.println("showAllEmployeesWithDepartments ERROR: " + e.getSQLState());
             e.printStackTrace();
         }
     }
@@ -195,7 +195,6 @@ public class EmployeesController {
         selectedRecordDepsEmp.setText(selected.getLastName()  + " " +
                                     selected.getFirstName() + " " +
                                     selected.getPatronymic());
-        System.out.println(selectedRecordEmpDep);
     }
 
     public void addEmployeeToDepartment(ActionEvent actionEvent) {
@@ -208,7 +207,7 @@ public class EmployeesController {
         } catch (Exception e) {
             AppUtil.showAlert(Alert.AlertType.WARNING,
                     "Waning", "Cannot add an employee to department", e.getMessage());
-            e.printStackTrace();
+            //e.printStackTrace();
         }
     }
 
@@ -221,7 +220,7 @@ public class EmployeesController {
         } catch (Exception e) {
             AppUtil.showAlert(Alert.AlertType.WARNING,
                     "Waning", "Cannot remove an employee from department", e.getMessage());
-            e.printStackTrace();
+            //e.printStackTrace();
         }
     }
 

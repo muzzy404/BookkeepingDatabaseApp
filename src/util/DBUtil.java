@@ -17,15 +17,15 @@ public class DBUtil {
     public static void dbConnect() throws ClassNotFoundException, SQLException {
         try {
             Class.forName(JDBC_DRIVER);
-            System.out.println("Oracle JDBC Driver Registered.");
+            //System.out.println("Oracle JDBC Driver Registered.");
 
             connection = DriverManager.getConnection(JDBC_STR, USER, PASSWORD);
-            System.out.println("Got connection.");
+            //System.out.println("Got connection.");
         } catch (ClassNotFoundException e) {
-            System.out.println("JDBC driver not found.");
+            System.err.println("JDBC driver not found.");
             throw e;
         } catch (SQLException e) {
-            System.out.println("Connection failed.");
+            System.err.println("Connection failed.");
             throw e;
         }
     }
@@ -34,10 +34,10 @@ public class DBUtil {
         try {
             if (connection != null && !connection.isClosed()) {
                 connection.close();
-                System.out.println("Connection closed.");
+                //System.out.println("Connection closed.");
             }
         } catch (SQLException e) {
-            System.out.println("Connection closing failed.");
+            System.err.println("Connection closing failed.");
             e.printStackTrace();
         }
     }
@@ -56,7 +56,7 @@ public class DBUtil {
             cursor = new CachedRowSetImpl();
             cursor.populate(resultSet);
         } catch (Exception e) {
-            System.out.println("Problem occurred at execute SELECT operation.");
+            System.err.println("Problem occurred at execute SELECT operation.");
             e.printStackTrace();
         } finally {
             if (resultSet != null) resultSet.close();
@@ -80,7 +80,7 @@ public class DBUtil {
             //e.printStackTrace();
             throw e;
         } catch (Exception e) {
-            System.out.println("Problem occurred at execute UPDATE operation.");
+            System.err.println("Problem occurred at execute UPDATE operation.");
             e.printStackTrace();
         } finally {
             if (statement != null) statement.close();

@@ -89,7 +89,7 @@
                         <Insets left="5.0" right="5.0" />
                      </GridPane.margin>
                   </TextField>
-                  <Button fx:id="btnDeleteEmp" minWidth="100.0" mnemonicParsing="false" onAction="#deleteEmployee" text="Delete" GridPane.rowIndex="6">
+                  <Button fx:id="btnDeleteEmp" minWidth="100.0" mnemonicParsing="false" onAction="#deleteEmployee" text="Delete" GridPane.rowIndex="5">
                      <GridPane.margin>
                         <Insets />
                      </GridPane.margin>
@@ -104,7 +104,7 @@
                         <Insets right="5.0" />
                      </GridPane.margin>
                   </Button>
-                  <Button fx:id="btnClearFields" minWidth="100.0" mnemonicParsing="false" onAction="#clearSelectedEmployee" text="Clear" GridPane.rowIndex="5" />
+                  <Button fx:id="btnClearFields" minWidth="100.0" mnemonicParsing="false" onAction="#clearSelectedEmployee" text="Clear" GridPane.rowIndex="6" />
                   <TextField fx:id="fieldFirstName" promptText="employee first name" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets left="5.0" right="5.0" />
