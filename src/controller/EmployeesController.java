@@ -13,6 +13,8 @@ import java.util.ArrayList;
 public class EmployeesController {
     private ArrayList<Integer> departmentsIds;
 
+    private static final String WARNING = "Warning";
+
     static private final int NO_ID = -1;
     static private final String NOT_SELECTED = "not selected";
 
@@ -118,7 +120,7 @@ public class EmployeesController {
                 EmployeeDAO.updateEmployee(selectedEmpId, lastName, firstName, patronymic, position, salary);
             }
         } catch (Exception e) {
-            AppUtil.showAlert(Alert.AlertType.WARNING, "Warning", "Failed", e.getMessage());
+            AppUtil.showAlert(Alert.AlertType.WARNING, WARNING, "Failed", e.getMessage());
         }
 
         showAllEmployees();
@@ -130,7 +132,7 @@ public class EmployeesController {
             EmployeeDAO.deleteEmployee(selectedEmpId);
             showAllEmployees();
         } catch (Exception e) {
-            AppUtil.showAlert(Alert.AlertType.WARNING, "Warning", "Delete failed", e.getMessage());
+            AppUtil.showAlert(Alert.AlertType.WARNING, WARNING, "Delete failed", e.getMessage());
         }
     }
 
@@ -193,8 +195,8 @@ public class EmployeesController {
 
         selectedRecordEmpDep = selected.getId();
         selectedRecordDepsEmp.setText(selected.getLastName()  + " " +
-                                    selected.getFirstName() + " " +
-                                    selected.getPatronymic());
+                                      selected.getFirstName() + " " +
+                                      selected.getPatronymic());
     }
 
     public void addEmployeeToDepartment(ActionEvent actionEvent) {
@@ -206,7 +208,7 @@ public class EmployeesController {
             showAllEmployeesWithDepartments();
         } catch (Exception e) {
             AppUtil.showAlert(Alert.AlertType.WARNING,
-                    "Waning", "Cannot add an employee to department", e.getMessage());
+                    WARNING, "Cannot add an employee to department", e.getMessage());
             //e.printStackTrace();
         }
     }
@@ -219,7 +221,7 @@ public class EmployeesController {
             showAllEmployeesWithDepartments();
         } catch (Exception e) {
             AppUtil.showAlert(Alert.AlertType.WARNING,
-                    "Waning", "Cannot remove an employee from department", e.getMessage());
+                    WARNING, "Cannot remove an employee from department", e.getMessage());
             //e.printStackTrace();
         }
     }
