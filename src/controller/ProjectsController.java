@@ -85,7 +85,7 @@ public class ProjectsController {
             ProjectDAO.insertProject(name, cost, department, dateBegin, dateEnd);
             showAllProjects(null);
         } catch (SQLException e) {
-            AppUtil.showAlert(Alert.AlertType.ERROR, "Error", "Insert Error", e.getSQLState());
+            AppUtil.showAlert(Alert.AlertType.WARNING, "Error", "Insert Error", e.getMessage());
         } catch (Exception e) {
             AppUtil.showAlert(Alert.AlertType.WARNING, "Warning",
                     "All fields must be correctly filled and contain data",
