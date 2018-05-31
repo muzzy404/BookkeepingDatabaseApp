@@ -10,10 +10,10 @@ import java.sql.SQLException;
 public class DepartmentDAO {
     protected static final String DEPARTMENTS_T = "BOOKKEEPING.DEPARTMENTS";
 
-    private static final String selectAll = "SELECT * FROM " + DEPARTMENTS_T;
+    private static final String SELECT_ALL_QUERY = "SELECT * FROM " + DEPARTMENTS_T;
 
     public static ObservableList<Department> selectAll() throws SQLException {
-        ResultSet resultSet = DBUtil.dbExecuteSelect(selectAll);
+        ResultSet resultSet = DBUtil.dbExecuteSelect(SELECT_ALL_QUERY);
         return getDepartmentsList(resultSet);
     }
 
