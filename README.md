@@ -5,7 +5,7 @@ __The coursework for the Oracle database course (6th semester SPbPU)__
 - JavaFX
 
 
-## Database structure
+### Database structure
 
 ![database structure](https://cldup.com/-NqDHjSCJl-3000x3000.png)
 
