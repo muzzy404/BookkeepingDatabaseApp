@@ -5,30 +5,30 @@ __The coursework for the Oracle database course (6th semester SPbPU)__
 - JavaFX
 
 
-**_Database structure_**
+## Database structure
 
 ![database structure](https://cldup.com/-NqDHjSCJl-3000x3000.png)
 
 
-**_Projects window_**
+### Projects window
 
 ![projects window](https://cldup.com/z6-GnFxpb6.png) !![projects window](https://cldup.com/POmGWZmGIM.png)
 
 
 
-**_Employees window_**
+### Employees window
 
 ![employees window](https://cldup.com/t_8D6RZo9x.png)
 
 
 
-**_Departments window_**
+### Departments window
 
 ![departments window](https://cldup.com/Y3TCzeb66U.png)
 
 
 
-**_Examples of warnings_**
+### Examples of warnings
 
 ![warning](https://cldup.com/vGkcTM4tzg.png) ![warning](https://cldup.com/ApsszGOPyZ.png)
 
